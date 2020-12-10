@@ -1,1 +1,3 @@
 # BugTracker
+**Dictionary**
+(important terms)
