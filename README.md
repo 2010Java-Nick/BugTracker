@@ -2,7 +2,7 @@
 **Dictionary**
 (important terms)
 
---Employee: 
---Bug: 
---Ticket: 
---
+>>Employee: 
+>>Bug: 
+>>Ticket: 
+
