@@ -8,6 +8,9 @@ import java.util.List;
  * This is the information for a bug which will be resolved by a developer.
  * @author Ksenia
  *
+ *
+ *Added assignedDeveloper to know which developer the experience will be going to once the ticket resolves.
+ *@author Vincent
  */
 public class Ticket {
 
@@ -19,13 +22,14 @@ public class Ticket {
 	private Priority priority;
 	private int difficultyLevel;
 	private List<Post> comments = new ArrayList<>();
+	private Employee assignedDeveloper;
 
 	public Ticket() {
 		super();
 	}
 
 	public Ticket(Employee opener, String name, LocalDateTime created, Status status, Priority priority,
-			int difficultyLevel, List<Post> comments) {
+			int difficultyLevel, List<Post> comments, Employee assignedDeveloper) {
 		super();
 		this.opener = opener;
 		this.name = name;
@@ -34,10 +38,11 @@ public class Ticket {
 		this.priority = priority;
 		this.difficultyLevel = difficultyLevel;
 		this.comments = comments;
+		this.assignedDeveloper = assignedDeveloper;
 	}
 
 	public Ticket(long ticketId, Employee opener, String name, LocalDateTime created, Status status,
-			Priority priority, int difficultyLevel, List<Post> comments) {
+			Priority priority, int difficultyLevel, List<Post> comments, Employee assignedDeveloper) {
 		super();
 		this.ticketId = ticketId;
 		this.opener = opener;
@@ -47,6 +52,7 @@ public class Ticket {
 		this.priority = priority;
 		this.difficultyLevel = difficultyLevel;
 		this.comments = comments;
+		this.assignedDeveloper = assignedDeveloper;
 	}
 
 	public long getTicketId() {
@@ -61,7 +67,7 @@ public class Ticket {
 		return opener;
 	}
 
-	public void setEmployee(Employee opener) {
+	public void setOpener(Employee opener) {
 		this.opener = opener;
 	}
 
@@ -112,16 +118,26 @@ public class Ticket {
 	public void setComments(List<Post> comments) {
 		this.comments = comments;
 	}
+	
+
+	public Employee getAssignedDeveloper() {
+		return assignedDeveloper;
+	}
+
+	public void setAssignedDeveloper(Employee assignedDeveloper) {
+		this.assignedDeveloper = assignedDeveloper;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((assignedDeveloper == null) ? 0 : assignedDeveloper.hashCode());
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
 		result = prime * result + difficultyLevel;
-		result = prime * result + ((opener == null) ? 0 : opener.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((opener == null) ? 0 : opener.hashCode());
 		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + (int) (ticketId ^ (ticketId >>> 32));
@@ -137,6 +153,11 @@ public class Ticket {
 		if (getClass() != obj.getClass())
 			return false;
 		Ticket other = (Ticket) obj;
+		if (assignedDeveloper == null) {
+			if (other.assignedDeveloper != null)
+				return false;
+		} else if (!assignedDeveloper.equals(other.assignedDeveloper))
+			return false;
 		if (comments == null) {
 			if (other.comments != null)
 				return false;
@@ -149,15 +170,15 @@ public class Ticket {
 			return false;
 		if (difficultyLevel != other.difficultyLevel)
 			return false;
-		if (opener == null) {
-			if (other.opener != null)
-				return false;
-		} else if (!opener.equals(other.opener))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (opener == null) {
+			if (other.opener != null)
+				return false;
+		} else if (!opener.equals(other.opener))
 			return false;
 		if (priority == null) {
 			if (other.priority != null)
@@ -176,8 +197,10 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", employee=" + opener + ", name=" + name + ", created=" + created
+		return "Ticket [ticketId=" + ticketId + ", opener=" + opener + ", name=" + name + ", created=" + created
 				+ ", status=" + status + ", priority=" + priority + ", difficultyLevel=" + difficultyLevel
-				+ ", comments=" + comments + "]";
+				+ ", comments=" + comments + ", assignedDeveloper=" + assignedDeveloper + "]";
 	}
+
+
 }
