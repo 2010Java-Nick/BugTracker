@@ -1,15 +1,19 @@
 package BugTracker.pojos;
 
+/**
+ * This defines the level of urgency for a ticket. The levels are 'low', 'medium', and 'high'
+ * @author Acacia
+ *
+ */
 public class Priority {
-	
-	
+
 	private long priorityId;
 	private String priorityName;
-	
+
 	public Priority() {
 		super();
 	}
-	
+
 	public Priority(String priorityName) {
 		super();
 		this.priorityName = priorityName;
@@ -20,7 +24,6 @@ public class Priority {
 		this.priorityId = priorityId;
 		this.priorityName = priorityName;
 	}
-	
 
 	/**
 	 * @return the priorityId
@@ -28,18 +31,21 @@ public class Priority {
 	public long getPriorityId() {
 		return priorityId;
 	}
+
 	/**
 	 * @param priorityId the priorityId to set
 	 */
 	public void setPriorityId(long priorityId) {
 		this.priorityId = priorityId;
 	}
+
 	/**
 	 * @return the priorityName
 	 */
 	public String getPriorityName() {
 		return priorityName;
 	}
+
 	/**
 	 * @param priorityName the priorityName to set
 	 */
@@ -79,8 +85,5 @@ public class Priority {
 	public String toString() {
 		return "Priority [priorityId=" + priorityId + ", priorityName=" + priorityName + "]";
 	}
-	
-	
-	
 
 }

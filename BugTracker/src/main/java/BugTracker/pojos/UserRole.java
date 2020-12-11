@@ -1,14 +1,21 @@
 package BugTracker.pojos;
 
+/**
+ * This defines the different powers a employee may have. The roles are 'basic', 'developer', and 'manager'.
+ * A basic user can open a ticket. A developer can also resolve a ticket. A manager can moderate disputes.
+ * @author Ksenia
+ *
+ */
 public class UserRole {
-	
+
 	private long roleId;
 	private String roleName;
 	private int power;
+
 	public UserRole() {
 		super();
 	}
-	
+
 	public UserRole(String roleName, int power) {
 		super();
 		this.roleName = roleName;

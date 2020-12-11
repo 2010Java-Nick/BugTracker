@@ -1,26 +1,25 @@
 package BugTracker.pojos;
 
-
-
-
+/**
+ *The level of progress on a ticket
+ * The statuses are  opened, resolved-fixed, resolved-won't fix, resolved-postponed, 
+ * resolved-not reproduceable, resolved-duplicate,* or resolved-by design, or closed
+ * @author Acacia
+ *
+ */
 public class Status {
-	
+
 	private long statusId;
 	private String statusName;
-	
-	
+
 	public Status() {
 		super();
 	}
 
-
-	
 	public Status(String statusName) {
 		super();
 		this.statusName = statusName;
 	}
-
-
 
 	public Status(long statusId, String statusName) {
 		super();
@@ -28,14 +27,10 @@ public class Status {
 		this.statusName = statusName;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Status [statusId=" + statusId + ", statusName=" + statusName + "]";
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -45,8 +40,6 @@ public class Status {
 		result = prime * result + ((statusName == null) ? 0 : statusName.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -68,4 +61,3 @@ public class Status {
 	}
 
 }
-

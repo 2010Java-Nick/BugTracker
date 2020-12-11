@@ -1,5 +1,10 @@
 package BugTracker.pojos;
 
+/**
+ * This is a user. It will have one of three user roles which determines it's level of authorization. 
+ * @author Ksenia
+ *
+ */
 public class Employee {
 	
 	private long employeeId;
