@@ -9,7 +9,7 @@ import BugTracker.pojos.Ticket;
  */
 
 
-public interface TicketDaoInterface {
+public interface TicketDao {
 	
 	public void createTicket(Ticket ticket);
 	

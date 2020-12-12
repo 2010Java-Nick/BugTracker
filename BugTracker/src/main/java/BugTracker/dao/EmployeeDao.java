@@ -8,7 +8,7 @@ import BugTracker.pojos.Employee;
  *
  */
 
-public interface EmployeeDaoInterface {
+public interface EmployeeDao {
 	
 	public Employee createEmployee(Employee employee);
 	

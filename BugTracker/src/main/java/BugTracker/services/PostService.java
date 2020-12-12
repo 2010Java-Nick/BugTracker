@@ -5,7 +5,7 @@ import java.util.List;
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Ticket;
 
-public interface PostServiceInterface {
+public interface PostService {
 	/**
 	 * 
 	 * @param post
