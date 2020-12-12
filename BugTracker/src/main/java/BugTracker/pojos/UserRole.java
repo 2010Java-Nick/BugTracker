@@ -1,15 +1,32 @@
 package BugTracker.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * This defines the different powers a employee may have. The roles are 'basic', 'developer', and 'manager'.
  * A basic user can open a ticket. A developer can also resolve a ticket. A manager can moderate disputes.
  * @author Ksenia
  *
  */
-public class UserRole {
 
+@Entity
+@Table(name = "bug-tracker-role")
+public class UserRole {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "role_id")
 	private long roleId;
+	
+	@Column(name = "role_name")
 	private String roleName;
+	
+	@Column(name = "power")
 	private int power;
 
 	public UserRole() {

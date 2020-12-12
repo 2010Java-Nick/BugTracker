@@ -8,7 +8,7 @@ import BugTracker.pojos.Post;
  *
  */
 
-public interface PostDaoInterface {
+public interface PostDao {
 	
 	public Post createPost(Post post);
 	

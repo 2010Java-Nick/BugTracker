@@ -19,33 +19,33 @@ import BugTracker.pojos.UserRole;
 
 /**
  * Create a singleton instance of the sessionfactory to access the database.
+ * 
  * @author Vincent
  *
  */
 
-
 public class SessionFactoryUtil {
-	
+
 	private static SessionFactoryUtil sfu;
-	
+
 	private SessionFactory sessionFactory;
-	
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
-
 	/**
-	 * Sets up the Database with the required Username and Password,Connection Url, and hibernate settings
+	 * Sets up the Database with the required Username and Password,Connection Url,
+	 * and hibernate settings
 	 */
 	private SessionFactoryUtil() {
-		
+
 		if (sessionFactory == null) {
-			
+
 			Map<String, String> settings = new HashMap<>();
 			settings.put("hibernate.connection.url", System.getenv("DATABASE_URL"));
 			settings.put("hibernate.connection.username", System.getenv("DATABASE_USERNAME"));
@@ -54,32 +54,25 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			settings.put("hibernate.show_sql", "true");
 			settings.put("hibernate.format_sql", "true");
-			//settings.put("hibernate.hbm2ddl.auto", "create");
-			
-			
-			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
-			
-			Metadata metadata = new MetadataSources(standardRegistry)
-						.addAnnotatedClass(Employee.class)
-						.addAnnotatedClass(Post.class)
-						.addAnnotatedClass(Ticket.class)
-						.addAnnotatedClass(Priority.class)
-						.addAnnotatedClass(Status.class)
-						.addAnnotatedClass(UserRole.class)
-						.getMetadataBuilder()
-						.build();
-			
+			settings.put("hibernate.hbm2ddl.auto", "create");
+
+			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
+					.build();
+
+			Metadata metadata = new MetadataSources(standardRegistry).addAnnotatedClass(Employee.class)
+					.addAnnotatedClass(Post.class).addAnnotatedClass(Ticket.class).addAnnotatedClass(Priority.class)
+					.addAnnotatedClass(Status.class).addAnnotatedClass(UserRole.class).getMetadataBuilder().build();
+
 			sessionFactory = metadata.getSessionFactoryBuilder().build();
-			
+
 		}
-		
 	}
-	
+
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
 			sfu = new SessionFactoryUtil();
 		}
-		
+
 		return sfu;
 	}
 }
