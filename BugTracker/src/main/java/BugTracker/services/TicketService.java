@@ -4,7 +4,7 @@ import java.util.List;
 
 import BugTracker.pojos.Ticket;
 
-public interface TicketServiceInterface {
+public interface TicketService {
 	
 	public Ticket getTicket(long ticketId);
 	

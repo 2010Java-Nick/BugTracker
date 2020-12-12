@@ -1,17 +1,43 @@
 package BugTracker.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * This is a user. It will have one of three user roles which determines it's level of authorization. 
- * @author Ksenia
+ * @author Ksenia, Vincent
  *
  */
+
+@Entity
+@Table(name = "bug-tracker-employee")
 public class Employee {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "employee_id")
 	private long employeeId;
+	
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "email_address")
 	private String emailAddress;
+	
+	@Column(name = "experience_points")
 	private int expPoints;
+	
+	@ManyToOne
+	@JoinColumn(name = "role_id")
 	private UserRole userRole;
 	
 	public Employee() {
