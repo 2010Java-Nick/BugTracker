@@ -8,6 +8,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.Post;
@@ -51,8 +52,6 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.password", System.getenv("DATABASE_PASSWORD"));
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-			//settings.put("hibernate.connection.driver_class", "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			//settings.put("hibernate.connection.dialect", "org.hibernate.dialect.SQLServer2012Dialect");
 			settings.put("hibernate.show_sql", "true");
 			settings.put("hibernate.format_sql", "true");
 			//settings.put("hibernate.hbm2ddl.auto", "create");

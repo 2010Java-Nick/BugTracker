@@ -10,7 +10,7 @@ import BugTracker.pojos.Employee;
 
 public interface EmployeeDaoInterface {
 	
-	public void createEmployee(Employee employee);
+	public Employee createEmployee(Employee employee);
 	
 	public Employee readEmployeeById(long employeeId);
 	

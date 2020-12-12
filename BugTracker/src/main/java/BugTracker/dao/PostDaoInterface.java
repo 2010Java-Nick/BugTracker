@@ -10,7 +10,7 @@ import BugTracker.pojos.Post;
 
 public interface PostDaoInterface {
 	
-	public void createPost(Post post);
+	public Post createPost(Post post);
 	
 	public Post readPost(long postId);
 	

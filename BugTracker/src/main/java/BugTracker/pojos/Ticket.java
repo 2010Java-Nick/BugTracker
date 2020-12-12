@@ -5,25 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is the information for a bug which will be resolved by a developer.
- * @author Ksenia
- *
- *
- *Added assignedDeveloper to know which developer the experience will be going to once the ticket resolves.
- *@author Vincent
+ * This is the information for a bug which will be resolved by a developer. The assigned developer will 
+ * resolve the ticket and receive exp points for the ticket.
+ * @author Ksenia, Vincent
+ * 
  */
 public class Ticket {
 
 	private long ticketId;
 	private Employee opener;
+	private Employee assignedDeveloper;
 	private String name;
 	private LocalDateTime created;
 	private Status status;
 	private Priority priority;
 	private int difficultyLevel;
 	private List<Post> comments = new ArrayList<>();
-	private Employee assignedDeveloper;
-
+	
 	public Ticket() {
 		super();
 	}
