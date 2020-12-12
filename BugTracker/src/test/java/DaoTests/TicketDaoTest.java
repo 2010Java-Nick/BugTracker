@@ -10,7 +10,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import BugTracker.dao.TicketDaoImpl;
 import BugTracker.pojos.Ticket;
-import BugTracker.utils.SessionFactoryUtil;
 
 import org.junit.After;
 import org.junit.AfterClass;

@@ -5,15 +5,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import BugTracker.pojos.Ticket;
+import BugTracker.pojos.Post;
 
-public class TicketDaoImpl implements TicketDao {
+public class PostDaoImpl implements PostDao {
 	
 	@Autowired
 	public SessionFactory sessionFactory;
 	
 	@Autowired
-	public TicketDaoImpl(SessionFactory sessionFactory) {
+	public PostDaoImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
@@ -22,43 +22,43 @@ public class TicketDaoImpl implements TicketDao {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
 	/**
-	 * createTicket takes in a new ticket, 
-	 * adds it to the database, and returns the added ticket
-	 * @params ticket
-	 * @returns ticket
+	 * createPost takes in a new post and puts it into the database, then returns
+	 * that post
+	 * @params post
+	 * @returns post
+	 * @author Acacia and Hannah
 	 */
 	@Override
-	public Ticket createTicket(Ticket ticket) {
-		
+	public Post createPost(Post post) {
+
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
-		sess.save(ticket);
+		sess.save(post);
 		tx.commit();
 		sess.close();
 		
+		return post;
+
+	}
+
+	@Override
+	public Post readPost(long postId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Post updatePost(long postId, Post post) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePost(Post post) {
+		// TODO Auto-generated method stub
 		
-		return ticket;
-
-	}
-
-	@Override
-	public Ticket readTicket(long ticketId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Ticket updateTicket(long ticketId, Ticket ticket) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
