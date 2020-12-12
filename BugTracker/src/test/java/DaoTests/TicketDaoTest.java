@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import BugTracker.dao.TicketDaoImpl;
 import BugTracker.pojos.Ticket;
+import BugTracker.utils.SessionFactoryUtil;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,7 +23,7 @@ import org.junit.runner.RunWith;
 public class TicketDaoTest {
 	
 	@InjectMocks
-	SessionFactory sessionFactory;
+	public SessionFactory sessionFactory;
 	
 
 	public TicketDaoImpl ticketDao = new TicketDaoImpl(sessionFactory);

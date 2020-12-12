@@ -2,7 +2,7 @@ package BugTracker.dao;
 
 import BugTracker.pojos.Employee;
 
-public class EmployeeDaoImpl implements EmployeeDaoInterface {
+public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public Employee createEmployee(Employee employee) {
