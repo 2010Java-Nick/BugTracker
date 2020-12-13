@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import BugTracker.pojos.Status;
 import BugTracker.pojos.UserRole;
 
 public class UserRoleDaoImpl implements UserRoleDao {
@@ -31,7 +32,7 @@ public class UserRoleDaoImpl implements UserRoleDao {
 	 * @author Acacia and Hannah
 	 */
 	
-	//TODO test createUserRole
+	//TODO test createUserRole in DAO
 	@Override
 	public UserRole createUserRole(UserRole userRole) {
 		Session sess = sessionFactory.openSession();
@@ -44,10 +45,20 @@ public class UserRoleDaoImpl implements UserRoleDao {
 		return userRole;
 	}
 
+	/**
+	 * readUserRole takes in a role ID, returns the corresponding object from the database
+	 * @param long
+	 * @returns UserRole
+	 * @author Acacia and Hannah
+	 */
+	//TODO testing for readUserRole in DAO
 	@Override
 	public UserRole readUserRole(long userRoleId) {
-		// TODO Auto-generated method stub
-		return null;
+		UserRole userRole;
+		Session sess = sessionFactory.openSession();
+		userRole =  sess.get(UserRole.class, userRoleId);
+		sess.close();
+		return userRole;
 	}
 
 	@Override

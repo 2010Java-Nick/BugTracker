@@ -1,14 +1,21 @@
 package BugTracker.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import BugTracker.pojos.Ticket;
+import BugTracker.dtos.TicketDto;
 import BugTracker.services.EmployeeService;
 import BugTracker.services.TicketService;
 
 public class TicketController {
 	TicketService ticketService;
 	EmployeeService employeeService;
+	
 	
 	@Autowired
 	public void setTicketService(TicketService ticketService) {
@@ -20,7 +27,24 @@ public class TicketController {
 		this.employeeService = employeeService;
 	}
 	
-	public Ticket createTicket() {
-
+	/**
+	 * createTicket in Ticket controller takes in a ticketDTO from the front end,
+	 * calls the service to create the ticket in the database, then creates a new response
+	 * entity and returns that
+	 * @param ticketDto
+	 * @return ResponseEntity<TicketDto>
+	 * @author Acacia and Hannah
+	 */
+	//TODO test createTicket in Ticket Controller
+	@RequestMapping(path = "/ticket", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto ticketDto) {
+		
+		ticketService.createTicket(ticketDto);
+		
+		ResponseEntity<TicketDto> rEntity = new ResponseEntity<TicketDto>(ticketDto, HttpStatus.CREATED);
+		
+		return rEntity;
+		
 	}	
 }

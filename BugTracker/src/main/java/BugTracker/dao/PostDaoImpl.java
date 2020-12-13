@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import BugTracker.pojos.Post;
+import BugTracker.pojos.Status;
 
 public class PostDaoImpl implements PostDao {
 	
@@ -43,10 +44,19 @@ public class PostDaoImpl implements PostDao {
 
 	}
 
+	/**
+	 * readPost takes in a postId and returns the corresponding object from the database
+	 * @param long
+	 * @returns Post
+	 * @author Acacia and Hannah
+	 */
 	@Override
 	public Post readPost(long postId) {
-		// TODO Auto-generated method stub
-		return null;
+		Post post;
+		Session sess = sessionFactory.openSession();
+		post =  sess.get(Post.class, postId);
+		sess.close();
+		return post;
 	}
 
 	@Override
