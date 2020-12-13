@@ -48,10 +48,7 @@ public class TicketDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
-		Ticket ticket = new Ticket();
-		
-		when(ticketDao.createTicket(ticket));
+	
 	}
 
 	@After

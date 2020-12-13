@@ -4,22 +4,58 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  * This is the information for a bug which will be resolved by a developer. The assigned developer will 
  * resolve the ticket and receive exp points for the ticket.
  * @author Ksenia, Vincent
  * 
  */
+
+@Entity
+@Table(name = "bug_tracker_ticket")
+
 public class Ticket {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ticket_id")
 	private long ticketId;
+	
+	@OneToOne
+	@JoinColumn(name = "opener_id")
 	private Employee opener;
+	
+	@OneToOne
+	@JoinColumn(name = "employee_id")
 	private Employee assignedDeveloper;
+	
 	private String name;
 	private LocalDateTime created;
+	
+	@OneToOne
+	@JoinColumn(name = "status_id")
 	private Status status;
+	
+	@OneToOne
+	@JoinColumn(name = "priority_id")
 	private Priority priority;
+	
+	@Column(name = "difficulty_level")
 	private int difficultyLevel;
+	
+	@OneToMany
+	@JoinColumn(name = "post_id")
 	private List<Post> comments = new ArrayList<>();
 	
 	public Ticket() {

@@ -2,14 +2,32 @@ package BugTracker.pojos;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 /**
  * This is communication between employees regarding status updates for tickets.
  * @author Ksenia
  *
  */
+@Entity
+@Table(name = "bug_tracker_post")
 public class Post {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "post_id")
 	private long postId;
+	
+	@OneToOne
+	@JoinColumn(name = "employee_id")
 	private Employee author;
 	private String body;
 	private LocalDateTime created;
