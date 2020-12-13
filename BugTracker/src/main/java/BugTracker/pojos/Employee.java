@@ -1,5 +1,6 @@
 package BugTracker.pojos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class Employee {
 	@Column(name = "experience_points")
 	private int expPoints;
 	
-	@ManyToOne
+	@ManyToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name = "role_id")
 	private UserRole userRole;
 	

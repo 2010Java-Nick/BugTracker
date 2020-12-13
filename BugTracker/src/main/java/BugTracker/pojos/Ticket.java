@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,29 +33,29 @@ public class Ticket {
 	@Column(name = "ticket_id")
 	private long ticketId;
 	
-	@OneToOne
-	@JoinColumn(name = "opener_id")
+	@OneToOne(cascade= {CascadeType.ALL})
+	@JoinColumn(name = "opener_id" )
 	private Employee opener;
 	
-	@OneToOne
+	@OneToOne(cascade= {CascadeType.ALL})
 	@JoinColumn(name = "employee_id")
 	private Employee assignedDeveloper;
 	
 	private String name;
 	private LocalDateTime created;
 	
-	@OneToOne
+	@OneToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name = "status_id")
 	private Status status;
 	
-	@OneToOne
+	@OneToOne (cascade= {CascadeType.ALL})
 	@JoinColumn(name = "priority_id")
 	private Priority priority;
 	
 	@Column(name = "difficulty_level")
 	private int difficultyLevel;
 	
-	@OneToMany
+	@OneToMany (cascade= {CascadeType.ALL})
 	@JoinColumn(name = "post_id")
 	private List<Post> comments = new ArrayList<>();
 	

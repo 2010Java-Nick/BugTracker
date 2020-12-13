@@ -61,6 +61,7 @@ public class TicketServiceTest {
 
 	@Test
 	public void test() {
+		
 		UserRole developer = new UserRole("Developer", 2);
 		Priority priority1 = new Priority("Urgent");
 		Status opened = new Status("Opened");

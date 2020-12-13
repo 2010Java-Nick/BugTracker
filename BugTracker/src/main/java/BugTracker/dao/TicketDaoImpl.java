@@ -44,9 +44,13 @@ public class TicketDaoImpl implements TicketDao {
 	}
 
 	@Override
-	public Ticket readTicket(long ticketId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ticket readTicket(long ticketId) { 
+		Ticket ticket;
+		Session sess = sessionFactory.openSession();
+		ticket =  sess.get( Ticket.class, ticketId);
+		sess.close();
+		return ticket;
+		
 	}
 
 	@Override
@@ -57,7 +61,12 @@ public class TicketDaoImpl implements TicketDao {
 
 	@Override
 	public void deleteTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(ticket);
+		tx.commit();
+		sess.close();
+		
 
 	}
 
