@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import BugTracker.dao.EmployeeDao;
+import BugTracker.dao.UserRoleDao;
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.UserRole;
 
@@ -14,6 +15,8 @@ import BugTracker.pojos.UserRole;
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	EmployeeDao employeeDao;
+	
+	UserRoleDao userRoleDao;
 	
 	@Autowired
 	@Qualifier(value = "employeeDao")
@@ -53,7 +56,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	public UserRole setUserRoleObject(long userRoleId) {
 		
-		
+		//TODO add UserRoleDao function call 
+		return null;
 		
 	}
 

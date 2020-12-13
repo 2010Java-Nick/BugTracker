@@ -2,6 +2,7 @@ package BugTracker.services;
 
 import java.util.List;
 
+import BugTracker.pojos.Priority;
 import BugTracker.pojos.Ticket;
 
 public interface TicketService {
@@ -19,5 +20,8 @@ public interface TicketService {
 	public Ticket updateTicket(long ticketId, Ticket ticket);
 	
 	public void deleteTicket(Ticket ticket);
+	
+	public Priority getPriorityObject(long priorityId);
+	
 	
 }

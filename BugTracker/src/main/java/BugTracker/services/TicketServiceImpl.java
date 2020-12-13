@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import BugTracker.dao.PriorityDao;
 import BugTracker.dao.TicketDao;
+import BugTracker.pojos.Priority;
 import BugTracker.pojos.Ticket;
 
 @Service
@@ -16,10 +18,11 @@ public class TicketServiceImpl implements TicketService {
 	
 	SessionFactory sessionFactory;
 
-
 	TicketDao ticketDao;
 	
 	EmployeeService employeeService;
+	
+	PriorityDao priorityDao;
 	
 	@Autowired
 	@Qualifier(value = "ticketDao")
@@ -82,6 +85,18 @@ public class TicketServiceImpl implements TicketService {
 	public void deleteTicket(Ticket ticket) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	/**
+	 * getPriorityObject takes in a priority ID, passes it to the DAO, and returns the object associated
+	 * with that id
+	 * @param long
+	 * @returns Priority
+	 * @author Acacia and Hannah
+	 */
+	@Override
+	public Priority getPriorityObject(long priorityId) {
+		return priorityDao.readPriorityById(priorityId);
 	}
 
 }

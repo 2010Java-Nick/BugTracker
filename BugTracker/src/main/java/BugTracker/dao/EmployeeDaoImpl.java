@@ -25,7 +25,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	
-	
+	/**
+	 * createEmployee takes in a new employee object, adds it to the database, then returns the
+	 * added object
+	 * @param Employee
+	 * @returns Employee
+	 * @author Acacia and Hannah
+	 */
 	
 	@Override
 	public Employee createEmployee(Employee employee) {
