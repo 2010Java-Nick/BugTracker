@@ -4,8 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Ticket;
+
+@Repository(value="ticketDao")
 
 public class TicketDaoImpl implements TicketDao {
 	
@@ -35,16 +38,22 @@ public class TicketDaoImpl implements TicketDao {
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(ticket);
+		tx.commit();
 		sess.close();
+		
 		
 		return ticket;
 
 	}
 
 	@Override
-	public Ticket readTicket(long ticketId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ticket readTicket(long ticketId) { 
+		Ticket ticket;
+		Session sess = sessionFactory.openSession();
+		ticket =  sess.get( Ticket.class, ticketId);
+		sess.close();
+		return ticket;
+		
 	}
 
 	@Override
@@ -55,7 +64,12 @@ public class TicketDaoImpl implements TicketDao {
 
 	@Override
 	public void deleteTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(ticket);
+		tx.commit();
+		sess.close();
+		
 
 	}
 

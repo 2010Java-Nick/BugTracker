@@ -1,116 +1,106 @@
-package BugTracker.pojos;
+package BugTracker.dtos;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import BugTracker.pojos.UserRole;
 
 /**
- * This is a user. It will have one of three user roles which determines it's level of authorization. 
- * @author Ksenia, Vincent
+ * Data Transfer object to read in Employees from front end and push to front end. 
+ * @author Acacia and Hannah
  *
  */
 
-@Entity
-@Table(name = "bug_tracker_employee")
-public class Employee {
+public class EmployeeDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "employee_id")
 	private long employeeId;
-	
-	@Column(name = "first_name")
+
 	private String firstName;
 	
-	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name = "email_address")
+
 	private String emailAddress;
-	
-	@Column(name = "experience_points")
+
 	private int expPoints;
 	
-	@ManyToOne (cascade= {CascadeType.ALL})
-	@JoinColumn(name = "role_id")
-	private UserRole userRole;
-	
-	public Employee() {
+	private long userRoleId;
+
+	public EmployeeDto() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public Employee(String firstName, String lastName, String emailAddress, int expPoints, UserRole userRole) {
+
+	public EmployeeDto(String firstName, String lastName, String emailAddress, int expPoints, long userRoleId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 		this.expPoints = expPoints;
-		this.userRole = userRole;
+		this.userRoleId = userRoleId;
 	}
-	
-	public Employee(long employeeId, String firstName, String lastName, String emailAddress, int expPoints,
-			UserRole userRole) {
+
+	public EmployeeDto(long employeeId, String firstName, String lastName, String emailAddress, int expPoints,
+			long userRoleId) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 		this.expPoints = expPoints;
-		this.userRole = userRole;
+		this.userRoleId = userRoleId;
 	}
-	
+
 	public long getEmployeeId() {
 		return employeeId;
 	}
-	
+
 	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	public String getEmailAddress() {
 		return emailAddress;
 	}
-	
+
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	
+
 	public int getExpPoints() {
 		return expPoints;
 	}
-	
+
 	public void setExpPoints(int expPoints) {
 		this.expPoints = expPoints;
 	}
-	
-	public UserRole getUserRole() {
-		return userRole;
+
+	public long getUserRoleId() {
+		return userRoleId;
 	}
-	
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
+
+	public void setUserRoleId(long userRoleId) {
+		this.userRoleId = userRoleId;
 	}
 
 	@Override
@@ -122,7 +112,7 @@ public class Employee {
 		result = prime * result + expPoints;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
+		result = prime * result + (int) (userRoleId ^ (userRoleId >>> 32));
 		return result;
 	}
 
@@ -134,7 +124,7 @@ public class Employee {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employee other = (Employee) obj;
+		EmployeeDto other = (EmployeeDto) obj;
 		if (emailAddress == null) {
 			if (other.emailAddress != null)
 				return false;
@@ -154,17 +144,18 @@ public class Employee {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (userRole == null) {
-			if (other.userRole != null)
-				return false;
-		} else if (!userRole.equals(other.userRole))
+		if (userRoleId != other.userRoleId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailAddress=" + emailAddress + ", expPoints=" + expPoints + ", userRole=" + userRole + "]";
+		return "EmployeeDto [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", emailAddress=" + emailAddress + ", expPoints=" + expPoints + ", userRoleId=" + userRoleId + "]";
 	}
+	
+	
+	
+
 }

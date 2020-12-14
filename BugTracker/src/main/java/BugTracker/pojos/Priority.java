@@ -1,12 +1,25 @@
 package BugTracker.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * This defines the level of urgency for a ticket. The levels are 'low', 'medium', and 'high'
  * @author Acacia
  *
  */
+
+@Entity
+@Table(name = "bug_tracker_priority")
 public class Priority {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "priority_id")
 	private long priorityId;
 	private String priorityName;
 
