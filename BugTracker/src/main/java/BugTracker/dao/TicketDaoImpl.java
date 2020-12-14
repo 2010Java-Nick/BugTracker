@@ -4,8 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Ticket;
+
+@Repository(value="ticketDao")
 
 public class TicketDaoImpl implements TicketDao {
 	

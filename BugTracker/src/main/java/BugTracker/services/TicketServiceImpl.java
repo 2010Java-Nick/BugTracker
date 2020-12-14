@@ -19,7 +19,7 @@ import BugTracker.pojos.Priority;
 import BugTracker.pojos.Status;
 import BugTracker.pojos.Ticket;
 
-@Service
+@Service(value ="ticketService")
 public class TicketServiceImpl implements TicketService {
 	
 	

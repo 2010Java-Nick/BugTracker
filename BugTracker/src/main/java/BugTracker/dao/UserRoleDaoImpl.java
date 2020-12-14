@@ -4,10 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Status;
 import BugTracker.pojos.UserRole;
 
+@Repository(value="userRoleDao")
 public class UserRoleDaoImpl implements UserRoleDao {
 	
 	SessionFactory sessionFactory;

@@ -4,13 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Status;
 
+@Repository(value = "postDao")
 public class PostDaoImpl implements PostDao {
 	
-	@Autowired
+
 	public SessionFactory sessionFactory;
 	
 	@Autowired
@@ -30,7 +32,10 @@ public class PostDaoImpl implements PostDao {
 	 * @params post
 	 * @returns post
 	 * @author Acacia and Hannah
+	 * 
 	 */
+	
+	//TODO test createPost dao method
 	@Override
 	public Post createPost(Post post) {
 
@@ -50,6 +55,8 @@ public class PostDaoImpl implements PostDao {
 	 * @returns Post
 	 * @author Acacia and Hannah
 	 */
+	
+	//TODO create read post test
 	@Override
 	public Post readPost(long postId) {
 		Post post;

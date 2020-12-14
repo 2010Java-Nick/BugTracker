@@ -11,13 +11,14 @@ import BugTracker.dao.PostDao;
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Ticket;
 
-@Service
+@Service(value="postService")
 public class PostServiceImpl implements PostService {
 	
-	SessionFactory sessionFactory;
+
 
 
 	PostDao postDao;
+	
 	
 	EmployeeService employeeService;
 	
@@ -32,6 +33,8 @@ public class PostServiceImpl implements PostService {
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
+	
+	
 
 	/**
 	 * createPost takes in a new post, passes it to the postDao, then returns

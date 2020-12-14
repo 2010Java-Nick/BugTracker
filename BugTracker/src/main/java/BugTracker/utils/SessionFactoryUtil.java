@@ -55,7 +55,7 @@ public class SessionFactoryUtil {
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			settings.put("hibernate.show_sql", "true");
 			settings.put("hibernate.format_sql", "true");
-			settings.put("hibernate.hbm2ddl.auto", "update");
+			settings.put("hibernate.hbm2ddl.auto", "create");
 
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
 					.build();

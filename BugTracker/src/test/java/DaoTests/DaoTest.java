@@ -10,9 +10,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
+import BugTracker.config.AppConfig;
+import BugTracker.dao.EmployeeDao;
 import BugTracker.dao.EmployeeDaoImpl;
+import BugTracker.dao.TicketDao;
 import BugTracker.dao.TicketDaoImpl;
+import BugTracker.dao.UserRoleDao;
+import BugTracker.dao.UserRoleDaoImpl;
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.Priority;
 import BugTracker.pojos.Status;
@@ -27,23 +35,38 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = AppConfig.class)
+
 public class DaoTest {
+	
 	
 	@Autowired
 	public SessionFactoryUtil sessionFactoryUtil;
 	
-	public EmployeeDaoImpl employeeDao = new EmployeeDaoImpl(sessionFactoryUtil.getSessionFactoryUtil().getSessionFactory());
-	public TicketDaoImpl ticketDao = new TicketDaoImpl(sessionFactoryUtil.getSessionFactoryUtil().getSessionFactory());
+	@Autowired
+	EmployeeDaoImpl employeeDao;
+	
+	@Autowired
+	TicketDaoImpl ticketDao;
+	
+	@Autowired
+	UserRoleDaoImpl userRoleDao;
+	
 	
 	private Employee employee1;
 	private Employee employee2;
-	private UserRole role;
+	private UserRole role1;
+	private UserRole role2;
 	private Status status;
 	private Priority priority1;
 	private Ticket ticket;
+	private long ticketId;
 	private long employee1Id;
 	private long employee2Id;
+	private long roleId1;
+	private long roleId2;
 
 
 	@BeforeClass
@@ -58,15 +81,17 @@ public class DaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		role = new UserRole("Developer", 2);
+		role1 = new UserRole("Employee", 1);
+		role2 = new UserRole("Developer", 2);
 		priority1 = new Priority("Urgent");
 		status= new Status("Opened");
-		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, role);
-		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, role);
+		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, role1);
+		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, role2);
 		employeeDao.createEmployee(employee1);
 		employeeDao.createEmployee(employee2);
 		employee1Id = employee1.getEmployeeId();
-		employee2Id = employee1.getEmployeeId();
+		employee2Id = employee2.getEmployeeId();
+		
 
 		
 		ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, null, employee2);
@@ -76,15 +101,42 @@ public class DaoTest {
 
 	@After
 	public void tearDown() throws Exception {
-		long ticketId = ticket.getTicketId();
+		/**
+		 * You have to delete the ticket before the employee before the role
+		 */
+	
+		ticketId = ticket.getTicketId();
+		System.out.println(ticketId);
 		if (ticketDao.readTicket(ticketId) != null) {
 			ticketDao.deleteTicket(ticket);
 		}
-		if (employeeDao.readEmployeeById(employee1Id) != null && 
-				employeeDao.readEmployeeById(employee2Id) != null) {
-		employeeDao.deleteEmployee(employee1);
-		employeeDao.deleteEmployee(employee2);
+		
+		employee1Id = employee1.getEmployeeId();
+		employee2Id = employee2.getEmployeeId();
+		System.out.println(employee1Id);
+		System.out.println(employee2Id);
+		if (employeeDao.readEmployeeById(employee1Id) != null) {
+			System.out.println("***Checking to see if inside Employee If Statement AHHHHHHHHHHH");
+			employeeDao.deleteEmployee(employee1);
 		}
+		if (employeeDao.readEmployeeById(employee2Id) != null) {
+					
+					System.out.println("Before employee2");
+					employeeDao.deleteEmployee(employee2);
+					System.out.println("After employee 2?");
+			}
+		
+		
+//		roleId = role.getRoleId();
+//		System.out.println(roleId);
+//		if (userRoleDao.readUserRole(roleId)!= null) {
+//			userRoleDao.deleteUserRole(role);
+//		}
+		
+	
+	
+		
+		
 	}
 
 	@Test
@@ -105,5 +157,38 @@ public class DaoTest {
 		assertNull(ticketDao.readTicket(ticketId));
 		
 	}
+	
+	@Test
+	public void createUserRoleTest() {
+//		UserRole returnedRole = userRoleDao.createUserRole(role);
+//		roleId = returnedRole.getRoleId();
+//		assertEquals(returnedRole, role);
+		
+		
+	}
+	
+	@Test
+	public void readUserRoleTest() {
+		
+	}
+	
+	@Test
+	public void createPriorityTest() {
+		
+	}
+	
+	@Test
+	public void readPriorityTest() {
+		
+	}
+	
+	@Test
+	public void createStatusTest() {
+		
+	}
 
+	@Test
+	public void readStatusTest() {
+		
+	}
 }

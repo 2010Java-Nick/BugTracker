@@ -11,11 +11,12 @@ import BugTracker.dao.UserRoleDao;
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.UserRole;
 
-@Service
+@Service(value="employeeService")
 public class EmployeeServiceImpl implements EmployeeService {
-	
+	@Autowired
 	EmployeeDao employeeDao;
 	
+	@Autowired
 	UserRoleDao userRoleDao;
 	
 	@Autowired
