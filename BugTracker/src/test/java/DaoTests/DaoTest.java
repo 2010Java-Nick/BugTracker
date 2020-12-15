@@ -132,12 +132,16 @@ public class DaoTest {
 		
 		
 		testRoleId = testRole.getRoleId();
-		if (userRoleDao.readUserRole(testRoleId)!= null) {
+		
+		if (userRoleDao.readUserRole(testRoleId) != null) {
+			System.out.println("Test role Id = " + testRoleId);
 			userRoleDao.deleteUserRole(testRole);
 		}
 		
 		createRoleId = createRole.getRoleId();
-		if (userRoleDao.readUserRole(createRoleId)!= null) {
+		
+		if (userRoleDao.readUserRole(createRoleId) != null) {
+			System.out.println("Create role Id = " + createRoleId);
 			userRoleDao.deleteUserRole(createRole);
 		}
 		
@@ -190,23 +194,5 @@ public class DaoTest {
 		assertNull(userRoleDao.readUserRole(testRoleId1));
 	}
 	
-	@Test
-	public void createPriorityTest() {
-		
-	}
-	
-	@Test
-	public void readPriorityTest() {
-		
-	}
-	
-	@Test
-	public void createStatusTest() {
-		
-	}
 
-	@Test
-	public void readStatusTest() {
-		
-	}
 }
