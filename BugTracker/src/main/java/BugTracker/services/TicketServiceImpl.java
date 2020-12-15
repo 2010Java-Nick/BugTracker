@@ -92,14 +92,22 @@ public class TicketServiceImpl implements TicketService {
 		Status status = statusDao.readStatusById(ticketDto.getStatusId());
 		List<Post> postList = new ArrayList<>();
 		
-		for (long postId: ticketDto.getCommentIds()) {
-			postList.add(postDao.readPost(postId));
-		}
+		postList.add(postDao.readPost( ticketDto.getCommentIds().get(0)));
+		
 		
 		Ticket ticket = new Ticket(opener, ticketDto.getName(), ticketDto.getCreated(),
 				status, priority, ticketDto.getDifficultyLevel(), postList, assigned);
 	
 		return ticketDao.createTicket(ticket);
+	}
+	
+	private Employee assignEmployee(int difficultyLevel) {
+		
+		// select all from bug_tracker_employee where exp_points > difficultyLevel * 10 
+		// select employee with least number of experience points and 
+		
+		
+		return null;
 	}
 
 	@Override
@@ -125,5 +133,7 @@ public class TicketServiceImpl implements TicketService {
 	public Priority getPriorityObject(long priorityId) {
 		return priorityDao.readPriorityById(priorityId);
 	}
+	
+	
 
 }
