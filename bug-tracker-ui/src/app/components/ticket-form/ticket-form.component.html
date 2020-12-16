@@ -1,0 +1,9 @@
+<form>
+    <label for="name">Name</label>
+    <input type="text" required name="name" id="name">
+
+    <label for="status">Status</label>
+    <select ngModel name="status" required id="status">
+        <option *ngFor="let status of statuses" [value]='status.statusId'>{{status.statusName}}</option>
+    </select>
+</form>
