@@ -18,19 +18,24 @@ export class TicketFormComponent implements OnInit {
 
     ];
 
-    priorities: Priority[] =
+  priorities: Priority[] =
     [
-      {priorityId: 1, priorityName: 'Low'}, {priorityId: 2, priorityName: 'Medium'}, 
-    {priorityId: 3, priorityName: 'High'}
-  ];
+      { priorityId: 1, priorityName: 'Low' }, { priorityId: 2, priorityName: 'Medium' },
+      { priorityId: 3, priorityName: 'High' }
+    ];
 
   userRoles: UserRole[] =
-  [
-    {roleId: 1, roleName: 'Basic', power: 1}, {roleId: 2, roleName: 'Developer', power: 2},
-    {roleId: 3, roleName: 'Manager', power: 3}
-  ]
+    [
+      { roleId: 1, roleName: 'Basic', power: 1 }, { roleId: 2, roleName: 'Developer', power: 2 },
+      { roleId: 3, roleName: 'Manager', power: 3 }
+    ]
+
+  submit(form: any) {
+    console.log(form.value);
+  }
 
   constructor() { }
+
 
   ngOnInit(): void {
   }
