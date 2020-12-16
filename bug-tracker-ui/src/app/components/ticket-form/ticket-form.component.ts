@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Status } from '../../model/status';
+import { Priority } from '../../model/priority';
+import { UserRole } from '../../model/user-role';
 
 @Component({
   selector: 'app-ticket-form',
@@ -15,6 +17,18 @@ export class TicketFormComponent implements OnInit {
     { statusId: 7, statusName: 'Resolved-By-Design' }, { statusId: 8, statusName: 'Closed' }
 
     ];
+
+    priorities: Priority[] =
+    [
+      {priorityId: 1, priorityName: 'Low'}, {priorityId: 2, priorityName: 'Medium'}, 
+    {priorityId: 3, priorityName: 'High'}
+  ];
+
+  userRoles: UserRole[] =
+  [
+    {roleId: 1, roleName: 'Basic', power: 1}, {roleId: 2, roleName: 'Developer', power: 2},
+    {roleId: 3, roleName: 'Manager', power: 3}
+  ]
 
   constructor() { }
 

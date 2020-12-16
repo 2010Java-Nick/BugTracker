@@ -1,9 +1,26 @@
 <form>
     <label for="name">Name</label>
     <input type="text" required name="name" id="name">
-
+<div>
     <label for="status">Status</label>
     <select ngModel name="status" required id="status">
         <option *ngFor="let status of statuses" [value]='status.statusId'>{{status.statusName}}</option>
     </select>
+    </div>
+    <div>
+        <label for ="priority">Priority</label>
+    <select ngModel name = "priority" required id = "priority">
+        <option *ngFor="let priority of priorities" [value] = 'priority.priorityId'>{{priority.priorityName}}
+        </option>
+    </select>
+    </div>
+    <div>
+        <label for = "userRole">User Role</label>
+    <select ngModel name = "userRole" required id = "userRole">
+        <option *ngFor="let userRole of userRoles" [value] = 'userRole.roleId'>
+            {{userRole.roleName}}
+        </option>
+    </select>
+    </div>
+
 </form>
