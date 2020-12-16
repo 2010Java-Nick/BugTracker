@@ -69,9 +69,19 @@ public class UserRoleDaoImpl implements UserRoleDao {
 		return null;
 	}
 
+	/**
+	 * deleteUserRole function takes in a userRole, then deletes it from the database
+	 * @param userRole
+	 * @authors Acacia and Hannah
+	 */
 	@Override
 	public void deleteUserRole(UserRole userRole) {
-		// TODO Auto-generated method stub
+		
+	Session sess = sessionFactory.openSession();
+	Transaction tx = sess.beginTransaction();
+	sess.delete(userRole);
+	tx.commit();
+	sess.close();
 		
 	}
 
