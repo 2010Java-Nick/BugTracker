@@ -21,6 +21,7 @@ public class Priority {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "priority_id")
 	private long priorityId;
+	@Column(name = "priority_name")
 	private String priorityName;
 
 	public Priority() {

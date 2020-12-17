@@ -40,7 +40,7 @@ public class Employee {
 	@Column(name = "experience_points")
 	private int expPoints;
 	
-	@ManyToOne (cascade= {CascadeType.ALL})
+	@ManyToOne (cascade= {CascadeType.PERSIST})
 	@JoinColumn(name = "role_id")
 	private UserRole userRole;
 	

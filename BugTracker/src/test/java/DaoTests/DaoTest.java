@@ -54,16 +54,20 @@ public class DaoTest {
 
 	private Employee employee1;
 	private Employee employee2;
-	private UserRole role1;
-	private UserRole role2;
+	private UserRole basic;
+	private UserRole developer;
+	private UserRole createRole;
 	private Status status;
 	private Priority priority1;
 	private Ticket ticket;
 	private long ticketId;
 	private long employee1Id;
 	private long employee2Id;
-	private long roleId1;
-	private long roleId2;
+	private UserRole testRole;
+	private long testRoleId;
+	private long testRoleId1;
+	private long createRoleId;
+
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -77,12 +81,23 @@ public class DaoTest {
 
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
 		role1 = new UserRole("Employee", 1);
 		role2 = new UserRole("Developer", 2);
 		priority1 = new Priority("Urgent");
 		status = new Status("Opened");
 		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, role1);
 		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, role2);
+=======
+
+		testRole = new UserRole("Test", 90);
+		createRole = new UserRole("Create", 99);
+		userRoleDao.createUserRole(testRole);
+		developer = userRoleDao.readUserRole(2);
+		basic = userRoleDao.readUserRole(1);
+		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, basic );
+		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, developer );
+>>>>>>> 173611f9e293e5b150de55fca0c423d783177c76
 		employeeDao.createEmployee(employee1);
 		employeeDao.createEmployee(employee2);
 		employee1Id = employee1.getEmployeeId();
@@ -106,13 +121,12 @@ public class DaoTest {
 
 		employee1Id = employee1.getEmployeeId();
 		employee2Id = employee2.getEmployeeId();
-		System.out.println(employee1Id);
-		System.out.println(employee2Id);
+
 		if (employeeDao.readEmployeeById(employee1Id) != null) {
-			System.out.println("***Checking to see if inside Employee If Statement AHHHHHHHHHHH");
 			employeeDao.deleteEmployee(employee1);
 		}
 		if (employeeDao.readEmployeeById(employee2Id) != null) {
+<<<<<<< HEAD
 
 			System.out.println("Before employee2");
 			employeeDao.deleteEmployee(employee2);
@@ -125,6 +139,34 @@ public class DaoTest {
 //			userRoleDao.deleteUserRole(role);
 //		}
 
+=======
+					
+					System.out.println("Before employee2");
+					employeeDao.deleteEmployee(employee2);
+					System.out.println("After employee 2?");
+			}
+		
+		
+		testRoleId = testRole.getRoleId();
+		
+		if (userRoleDao.readUserRole(testRoleId) != null) {
+			System.out.println("Test role Id = " + testRoleId);
+			userRoleDao.deleteUserRole(testRole);
+		}
+		
+		createRoleId = createRole.getRoleId();
+		
+		if (userRoleDao.readUserRole(createRoleId) != null) {
+			System.out.println("Create role Id = " + createRoleId);
+			userRoleDao.deleteUserRole(createRole);
+		}
+		
+		
+	
+	
+		
+		
+>>>>>>> 173611f9e293e5b150de55fca0c423d783177c76
 	}
 
 	@Test
@@ -147,18 +189,34 @@ public class DaoTest {
 
 	@Test
 	public void createUserRoleTest() {
+<<<<<<< HEAD
 //		UserRole returnedRole = userRoleDao.createUserRole(role);
 //		roleId = returnedRole.getRoleId();
 //		assertEquals(returnedRole, role);
 
+=======
+		UserRole returnedRole = userRoleDao.createUserRole(createRole);
+		//createRoleId = returnedRole.getRoleId();
+		assertEquals(returnedRole, createRole);
+		
+		
+>>>>>>> 173611f9e293e5b150de55fca0c423d783177c76
 	}
 
 	@Test
 	public void readUserRoleTest() {
+<<<<<<< HEAD
 
+=======
+		UserRole readRole;
+		readRole = userRoleDao.readUserRole(1);
+		assertEquals(readRole, new UserRole(1, "Basic", 1));
+		
+>>>>>>> 173611f9e293e5b150de55fca0c423d783177c76
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void createPriorityTest() {
 
 	}
@@ -177,4 +235,12 @@ public class DaoTest {
 	public void readStatusTest() {
 
 	}
+=======
+	public void deleteUserRoleTest() {
+		userRoleDao.deleteUserRole(testRole);
+		assertNull(userRoleDao.readUserRole(testRoleId1));
+	}
+	
+
+>>>>>>> 173611f9e293e5b150de55fca0c423d783177c76
 }

@@ -23,6 +23,7 @@ public class Status {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "status_id")
 	private long statusId;
+	@Column(name = "status_name")
 	private String statusName;
 
 	public Status() {
