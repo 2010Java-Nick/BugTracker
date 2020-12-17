@@ -23,9 +23,7 @@ import BugTracker.pojos.UserRole;
 @Configuration
 @ComponentScan
 public class ServerDriver {
-	@Autowired
-	SessionFactory sessionFactory;
-	TicketDao ticketDao = new TicketDaoImpl(sessionFactory);
+
 
 
 	public static void main(String[] args) throws LifecycleException, ServletException {
