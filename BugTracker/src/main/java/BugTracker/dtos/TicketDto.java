@@ -25,9 +25,7 @@ public class TicketDto {
 	 */
 
 
-	private long ticketId;
 	private long openerId;
-	private long assignedDeveloperId;
 	private String name;
 	private LocalDateTime created;
 	private long statusId;
@@ -45,9 +43,7 @@ public class TicketDto {
 	public TicketDto(long ticketId, long openerId, long assignedDeveloperId, String name, LocalDateTime created,
 			long statusId, long priorityId, int difficultyLevel, List<Integer> commentIds) {
 		super();
-		this.ticketId = ticketId;
 		this.openerId = openerId;
-		this.assignedDeveloperId = assignedDeveloperId;
 		this.name = name;
 		this.created = created;
 		this.statusId = statusId;
@@ -63,7 +59,6 @@ public class TicketDto {
 			long priorityId, int difficultyLevel, List<Integer> commentIds) {
 		super();
 		this.openerId = openerId;
-		this.assignedDeveloperId = assignedDeveloperId;
 		this.name = name;
 		this.created = created;
 		this.statusId = statusId;
@@ -73,24 +68,15 @@ public class TicketDto {
 	}
 
 
-	public long getTicketId() {
-		return ticketId;
-	}
-	public void setTicketId(long ticketId) {
-		this.ticketId = ticketId;
-	}
+	
+
 	public long getOpenerId() {
 		return openerId;
 	}
 	public void setOpenerId(long openerId) {
 		this.openerId = openerId;
 	}
-	public long getAssignedDeveloperId() {
-		return assignedDeveloperId;
-	}
-	public void setAssignedDeveloperId(long assignedDeveloperId) {
-		this.assignedDeveloperId = assignedDeveloperId;
-	}
+
 	public String getName() {
 		return name;
 	}
@@ -131,8 +117,7 @@ public class TicketDto {
 
 	@Override
 	public String toString() {
-		return "TicketDto [ticketId=" + ticketId + ", openerId=" + openerId + ", assignedDeveloperId="
-				+ assignedDeveloperId + ", name=" + name + ", created=" + created + ", statusId=" + statusId
+		return "TicketDto [openerId=" + openerId + ", name=" + name + ", created=" + created + ", statusId=" + statusId
 				+ ", priorityId=" + priorityId + ", difficultyLevel=" + difficultyLevel + ", commentIds=" + commentIds
 				+ "]";
 	}
@@ -142,7 +127,6 @@ public class TicketDto {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (assignedDeveloperId ^ (assignedDeveloperId >>> 32));
 		result = prime * result + ((commentIds == null) ? 0 : commentIds.hashCode());
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
 		result = prime * result + difficultyLevel;
@@ -150,7 +134,6 @@ public class TicketDto {
 		result = prime * result + (int) (openerId ^ (openerId >>> 32));
 		result = prime * result + (int) (priorityId ^ (priorityId >>> 32));
 		result = prime * result + (int) (statusId ^ (statusId >>> 32));
-		result = prime * result + (int) (ticketId ^ (ticketId >>> 32));
 		return result;
 	}
 
@@ -164,8 +147,6 @@ public class TicketDto {
 		if (getClass() != obj.getClass())
 			return false;
 		TicketDto other = (TicketDto) obj;
-		if (assignedDeveloperId != other.assignedDeveloperId)
-			return false;
 		if (commentIds == null) {
 			if (other.commentIds != null)
 				return false;
@@ -189,10 +170,17 @@ public class TicketDto {
 			return false;
 		if (statusId != other.statusId)
 			return false;
-		if (ticketId != other.ticketId)
-			return false;
 		return true;
 	}
+
+
+
+
+
+
+
+
+
 	
 	
 	
