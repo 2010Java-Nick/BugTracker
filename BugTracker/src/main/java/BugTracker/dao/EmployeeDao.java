@@ -19,8 +19,9 @@ public interface EmployeeDao {
 	
 	public Employee readEmployeeByCredentials(CredentialsDTO credentials);
 	
-	public Employee updateEmployee(long employeeId, Employee employee);
+	public Employee updateEmployee(Employee employee);
 	
 	public void deleteEmployee(Employee employee);
 
+	public Employee findAssigned();
 }

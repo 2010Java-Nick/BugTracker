@@ -35,7 +35,7 @@ public class AuthServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 		credentials = new CredentialsDTO("aholliday@gmail.com", "VincentIsSoCool");
-		employee = new Employee("Acacia", "Holliday", "aholliday@gmail.com", "VincentIsSoCool", 0, new UserRole("developer", 2));
+		employee = new Employee(90, "Acacia", "Holliday", "aholliday@gmail.com", "VincentIsSoCool", 0, new UserRole("developer", 2), 0);
 		when(employeeDao.readEmployeeByCredentials(credentials)).thenReturn(employee);
 	}
 

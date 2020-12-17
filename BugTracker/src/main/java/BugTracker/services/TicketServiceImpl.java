@@ -1,5 +1,6 @@
 package BugTracker.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import BugTracker.dao.EmployeeDao;
 import BugTracker.dao.PostDao;
 import BugTracker.dao.PriorityDao;
 import BugTracker.dao.StatusDao;
@@ -35,7 +37,19 @@ public class TicketServiceImpl implements TicketService {
 	
 	PostDao postDao;
 	
+	EmployeeDao employeeDao;
 	
+	@Autowired
+	@Qualifier(value = "employeeDao")
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+	
+	@Autowired
+	@Qualifier(value = "statusDao")
+	public void setStatusDao(StatusDao statusDao) {
+		this.statusDao = statusDao;
+	}
 	
 	@Autowired
 	@Qualifier(value = "ticketDao")
@@ -87,14 +101,21 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public Ticket createTicket(TicketDto ticketDto) {
 		Employee opener = employeeService.getEmployee(ticketDto.getOpenerId());
-		Employee assigned = employeeService.getEmployee(ticketDto.getAssignedDeveloperId());
 		Priority priority = priorityDao.readPriorityById(ticketDto.getPriorityId());
-		Status status = statusDao.readStatusById(ticketDto.getStatusId());
-		List<Post> postList = new ArrayList<>();
+		Status status = statusDao.readStatusById(1);
+		ArrayList<Post> postList = new ArrayList<>();
+		Post post = new Post(opener, ticketDto.getBody(), LocalDateTime.now());
+		postList.add(post);
 		
-		postList.add(postDao.readPost( ticketDto.getCommentIds().get(0)));
+		//call dao
 		
+		Employee assigned = employeeDao.findAssigned();
 		
+		int currentTickets = assigned.getNumTickets();
+		currentTickets++;
+		assigned.setNumTickets(currentTickets);
+		
+		employeeDao.updateEmployee(assigned);
 		Ticket ticket = new Ticket(opener, ticketDto.getName(), ticketDto.getCreated(),
 				status, priority, ticketDto.getDifficultyLevel(), postList, assigned);
 	

@@ -16,7 +16,7 @@ public class AuthServiceImpl implements AuthService {
 	private EmployeeDao empDao;
 	
 	@Autowired
-	@Qualifier(value = "EmployeeDao")
+	@Qualifier(value = "employeeDao")
 	public void setEmployeeDao(EmployeeDao empDao) {
 		this.empDao = empDao;
 	}
