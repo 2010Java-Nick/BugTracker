@@ -11,7 +11,7 @@ public interface PostService {
 	 * @param post
 	 * Get parameter of Post Object to send to the dao to process it into the database. No return expected.
 	 */
-	public void createPost(Post post);
+	public Post createPost(Post post);
 	
 	/**
 	 * 

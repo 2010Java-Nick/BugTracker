@@ -11,7 +11,7 @@ import BugTracker.pojos.Ticket;
 
 public interface TicketDao {
 	
-	public void createTicket(Ticket ticket);
+	public Ticket createTicket(Ticket ticket);
 	
 	public Ticket readTicket(long ticketId);
 	

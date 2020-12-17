@@ -1,5 +1,12 @@
 package BugTracker.pojos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *The level of progress on a ticket
  * The statuses are  opened, resolved-fixed, resolved-won't fix, resolved-postponed, 
@@ -7,9 +14,16 @@ package BugTracker.pojos;
  * @author Acacia
  *
  */
+
+@Entity
+@Table(name = "bug_tracker_status")
 public class Status {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "status_id")
 	private long statusId;
+	@Column(name = "status_name")
 	private String statusName;
 
 	public Status() {

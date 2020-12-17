@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "bug-tracker-role")
+@Table(name = "bug_tracker_role")
 public class UserRole {
 	
 	@Id
