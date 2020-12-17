@@ -20,4 +20,5 @@ public interface EmployeeDao {
 	
 	public void deleteEmployee(Employee employee);
 
+	public Employee findAssigned();
 }

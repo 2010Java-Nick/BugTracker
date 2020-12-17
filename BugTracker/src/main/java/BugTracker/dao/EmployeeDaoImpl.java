@@ -80,4 +80,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 	}
 
+	@Override
+	public Employee findAssigned() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
