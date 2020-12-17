@@ -16,7 +16,7 @@ public interface EmployeeDao {
 	
 	public Employee readEmployeeByUsername(String username);
 	
-	public Employee updateEmployee(long employeeId, Employee employee);
+	public Employee updateEmployee(Employee employee);
 	
 	public void deleteEmployee(Employee employee);
 

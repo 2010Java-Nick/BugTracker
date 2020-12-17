@@ -57,7 +57,7 @@ public class TicketDaoImpl implements TicketDao {
 	}
 
 	@Override
-	public Ticket updateTicket(long ticketId, Ticket ticket) {
+	public Ticket updateTicket(Ticket ticket) {
 		// TODO Auto-generated method stub
 		return null;
 	}

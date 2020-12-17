@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import BugTracker.dao.EmployeeDao;
 import BugTracker.dao.PostDao;
 import BugTracker.dao.PriorityDao;
 import BugTracker.dao.StatusDao;
@@ -35,6 +36,14 @@ public class TicketServiceImpl implements TicketService {
 	StatusDao statusDao;
 	
 	PostDao postDao;
+	
+	EmployeeDao employeeDao;
+	
+	@Autowired
+	@Qualifier(value = "employeeDao")
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
 	
 	@Autowired
 	@Qualifier(value = "statusDao")
@@ -100,7 +109,13 @@ public class TicketServiceImpl implements TicketService {
 		
 		//call dao
 		
+		Employee assigned = employeeDao.findAssigned();
 		
+		int currentTickets = assigned.getNumTickets();
+		currentTickets++;
+		assigned.setNumTickets(currentTickets);
+		
+		employeeDao.updateEmployee(assigned);
 		Ticket ticket = new Ticket(opener, ticketDto.getName(), ticketDto.getCreated(),
 				status, priority, ticketDto.getDifficultyLevel(), postList, assigned);
 	

@@ -91,8 +91,8 @@ public class DaoTest {
 		userRoleDao.createUserRole(testRole);
 		developer = userRoleDao.readUserRole(2);
 		basic = userRoleDao.readUserRole(1);
-		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, basic );
-		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, developer );
+		employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, basic, 0);
+		employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, developer, 0);
 		employeeDao.createEmployee(employee1);
 		employeeDao.createEmployee(employee2);
 		employee1Id = employee1.getEmployeeId();
@@ -192,6 +192,12 @@ public class DaoTest {
 	public void deleteUserRoleTest() {
 		userRoleDao.deleteUserRole(testRole);
 		assertNull(userRoleDao.readUserRole(testRoleId1));
+	}
+	
+	@Test
+	public void findAssignedTest() {
+		Employee employee = employeeDao.findAssigned();
+		assertEquals(employee, employee1);
 	}
 	
 
