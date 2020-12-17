@@ -10,36 +10,36 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import BugTracker.dtos.CredentialsDTO;
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.Ticket;
 
-@Repository(value="employeeDao")
+@Repository(value = "employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
+	
 	@Autowired
 	SessionFactory sessionFactory;
 
-	
-	
 	@Autowired
 	public EmployeeDaoImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	
 	/**
-	 * createEmployee takes in a new employee object, adds it to the database, then returns the
-	 * added object
+	 * createEmployee takes in a new employee object, adds it to the database, then
+	 * returns the added object
+	 * 
 	 * @param Employee
 	 * @returns Employee
 	 * @author Acacia and Hannah
 	 */
-	
+
 	@Override
 	public Employee createEmployee(Employee employee) {
 		Session sess = sessionFactory.openSession();
@@ -47,8 +47,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		sess.save(employee);
 		tx.commit();
 		sess.close();
-		
-		
+
 		return employee;
 	}
 
@@ -56,16 +55,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public Employee readEmployeeById(long employeeId) {
 		Employee employee;
 		Session sess = sessionFactory.openSession();
-		employee =  sess.get( Employee.class, employeeId);
+		employee = sess.get(Employee.class, employeeId);
 		sess.close();
 		return employee;
-	
+
 	}
 
 	@Override
-	public Employee readEmployeeByUsername(String username) {
+	public Employee readEmployeeByEmail(String email) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Employee readEmployeeByCredentials(CredentialsDTO credentials) {
+		Session sess = sessionFactory.openSession();
+		Employee employee = sess.createQuery("from Employee where email_address = :em and "
+				+ "employee_password = :pw", Employee.class)
+				.setParameter("em", credentials.getEmail())
+				.setParameter("pw", credentials.getPassword()).getSingleResult();
+		return employee;
 	}
 
 	@Override
@@ -86,7 +95,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		sess.delete(employee);
 		tx.commit();
 		sess.close();
-		
+
 	}
 
 	@Override

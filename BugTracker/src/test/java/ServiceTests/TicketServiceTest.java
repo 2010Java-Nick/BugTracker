@@ -49,8 +49,8 @@ public class TicketServiceTest {
 		UserRole developer = new UserRole("Developer", 2);
 		Priority priority1 = new Priority("Urgent");
 		Status opened = new Status("Opened");
-		Employee employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, developer);
-		Employee employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, developer);
+		Employee employee1 = new Employee(91, "Acacia", "Holliday", "aholliday@gmail.com", 0, developer, 0);
+		Employee employee2 = new Employee(92, "Hannah", "Novack", "hNovack@gmail.com", 0, developer, 0);
 		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, null, employee2);
 		
 	}
@@ -65,8 +65,8 @@ public class TicketServiceTest {
 		UserRole developer = new UserRole("Developer", 2);
 		Priority priority1 = new Priority("Urgent");
 		Status opened = new Status("Opened");
-		Employee employee1 = new Employee("Acacia", "Holliday", "aholliday@gmail.com", 0, developer);
-		Employee employee2 = new Employee("Hannah", "Novack", "hNovack@gmail.com", 0, developer);
+		Employee employee1 = new Employee(91, "Acacia", "Holliday", "aholliday@gmail.com", 0, developer, 0);
+		Employee employee2 = new Employee(92, "Hannah", "Novack", "hNovack@gmail.com", 0, developer, 0);
 		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, null, employee2);
 		when(ticketDao.createTicket(ticket)).thenReturn(ticket);
 	

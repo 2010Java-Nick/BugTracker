@@ -38,7 +38,6 @@ import org.junit.runner.RunWith;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = AppConfig.class)
-
 public class DaoTest {
 	
 	

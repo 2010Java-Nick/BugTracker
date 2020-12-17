@@ -34,6 +34,9 @@ public class Employee {
 	@Column(name = "email_address")
 	private String emailAddress;
 	
+	@Column(name = "employee_password")
+	private String password;
+	
 	@Column(name = "experience_points")
 	private int expPoints;
 	
@@ -46,6 +49,12 @@ public class Employee {
 	
 	public Employee() {
 		super();
+	}	
+	
+	public Employee(String emailAddress, String password) {
+		super();
+		this.emailAddress = emailAddress;
+		this.password = password;
 	}
 	
 
@@ -79,9 +88,20 @@ public class Employee {
 		this.numTickets = numTickets;
 	}
 
+	
 
-
-
+	public Employee(long employeeId, String firstName, String lastName, String emailAddress, String password,
+			int expPoints, UserRole userRole, int numTickets) {
+		super();
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.password = password;
+		this.expPoints = expPoints;
+		this.userRole = userRole;
+		this.numTickets = numTickets;
+	}
 
 	public long getEmployeeId() {
 		return employeeId;
@@ -141,6 +161,14 @@ public class Employee {
 
 
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -151,11 +179,10 @@ public class Employee {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + numTickets;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -187,6 +214,11 @@ public class Employee {
 			return false;
 		if (numTickets != other.numTickets)
 			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
 		if (userRole == null) {
 			if (other.userRole != null)
 				return false;
@@ -195,14 +227,14 @@ public class Employee {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailAddress=" + emailAddress + ", expPoints=" + expPoints + ", userRole=" + userRole
-				+ ", numTickets=" + numTickets + "]";
+				+ ", emailAddress=" + emailAddress + ", password=" + password + ", expPoints=" + expPoints
+				+ ", userRole=" + userRole + ", numTickets=" + numTickets + "]";
 	}
+
+
 	
 	
 }
