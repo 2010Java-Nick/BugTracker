@@ -15,7 +15,7 @@ public interface TicketDao {
 	
 	public Ticket readTicket(long ticketId);
 	
-	public Ticket updateTicket(long ticketId, Ticket ticket);
+	public Ticket updateTicket(Ticket ticket);
 	
 	public void deleteTicket(Ticket ticket);
 

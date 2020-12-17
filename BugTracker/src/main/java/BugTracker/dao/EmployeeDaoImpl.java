@@ -1,5 +1,9 @@
 package BugTracker.dao;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -74,10 +78,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee updateEmployee(long employeeId, Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee updateEmployee(Employee employee) {
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(employee);
+		tx.commit();
+		sess.close();
+		return employee;
 	}
+
 
 	@Override
 	public void deleteEmployee(Employee employee) {
@@ -87,6 +96,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		tx.commit();
 		sess.close();
 
+	}
+
+	@Override
+	public Employee findAssigned() {
+		Session sess = sessionFactory.openSession();
+		
+		Query query = sess.createQuery("from Employee order by num_tickets").setMaxResults(1);
+		
+		
+		Employee employee = (Employee) query.getSingleResult();
+
+		return employee;
 	}
 
 }

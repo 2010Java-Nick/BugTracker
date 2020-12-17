@@ -44,6 +44,9 @@ public class Employee {
 	@JoinColumn(name = "role_id")
 	private UserRole userRole;
 	
+	@Column(name = "num_tickets", nullable = false, columnDefinition = "int default 0")
+	private int numTickets;
+	
 	public Employee() {
 		super();
 	}	
@@ -54,17 +57,12 @@ public class Employee {
 		this.password = password;
 	}
 	
-	public Employee(String firstName, String lastName, String emailAddress, int expPoints, UserRole userRole) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.emailAddress = emailAddress;
-		this.expPoints = expPoints;
-		this.userRole = userRole;
-	}
+
+
+
 	
 	public Employee(long employeeId, String firstName, String lastName, String emailAddress, int expPoints,
-			UserRole userRole) {
+			UserRole userRole, int numTickets) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
@@ -72,17 +70,37 @@ public class Employee {
 		this.emailAddress = emailAddress;
 		this.expPoints = expPoints;
 		this.userRole = userRole;
+		this.numTickets = numTickets;
 	}
-	
-	public Employee(String firstName, String lastName, String emailAddress, String password,
-			int expPoints, UserRole userRole) {
+
+
+
+
+
+	public Employee(String firstName, String lastName, String emailAddress, int expPoints, UserRole userRole,
+			int numTickets) {
 		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.expPoints = expPoints;
+		this.userRole = userRole;
+		this.numTickets = numTickets;
+	}
+
+	
+
+	public Employee(long employeeId, String firstName, String lastName, String emailAddress, String password,
+			int expPoints, UserRole userRole, int numTickets) {
+		super();
+		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailAddress = emailAddress;
 		this.password = password;
 		this.expPoints = expPoints;
 		this.userRole = userRole;
+		this.numTickets = numTickets;
 	}
 
 	public long getEmployeeId() {
@@ -133,6 +151,24 @@ public class Employee {
 		this.userRole = userRole;
 	}
 
+	public int getNumTickets() {
+		return numTickets;
+	}
+
+	public void setNumTickets(int numTickets) {
+		this.numTickets = numTickets;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -142,6 +178,8 @@ public class Employee {
 		result = prime * result + expPoints;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + numTickets;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		return result;
 	}
@@ -174,6 +212,13 @@ public class Employee {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
+		if (numTickets != other.numTickets)
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
 		if (userRole == null) {
 			if (other.userRole != null)
 				return false;
@@ -185,6 +230,11 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailAddress=" + emailAddress + ", expPoints=" + expPoints + ", userRole=" + userRole + "]";
+				+ ", emailAddress=" + emailAddress + ", password=" + password + ", expPoints=" + expPoints
+				+ ", userRole=" + userRole + ", numTickets=" + numTickets + "]";
 	}
+
+
+	
+	
 }
