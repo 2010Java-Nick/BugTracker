@@ -1,5 +1,6 @@
 package BugTracker.dao;
 
+import BugTracker.dtos.CredentialsDTO;
 import BugTracker.pojos.Employee;
 
 /**
@@ -14,7 +15,9 @@ public interface EmployeeDao {
 	
 	public Employee readEmployeeById(long employeeId);
 	
-	public Employee readEmployeeByUsername(String username);
+	public Employee readEmployeeByEmail(String email);
+	
+	public Employee readEmployeeByCredentials(CredentialsDTO credentials);
 	
 	public Employee updateEmployee(long employeeId, Employee employee);
 	

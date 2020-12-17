@@ -34,6 +34,9 @@ public class Employee {
 	@Column(name = "email_address")
 	private String emailAddress;
 	
+	@Column(name = "employee_password")
+	private String password;
+	
 	@Column(name = "experience_points")
 	private int expPoints;
 	
@@ -43,6 +46,12 @@ public class Employee {
 	
 	public Employee() {
 		super();
+	}	
+	
+	public Employee(String emailAddress, String password) {
+		super();
+		this.emailAddress = emailAddress;
+		this.password = password;
 	}
 	
 	public Employee(String firstName, String lastName, String emailAddress, int expPoints, UserRole userRole) {
@@ -65,6 +74,17 @@ public class Employee {
 		this.userRole = userRole;
 	}
 	
+	public Employee(String firstName, String lastName, String emailAddress, String password,
+			int expPoints, UserRole userRole) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.password = password;
+		this.expPoints = expPoints;
+		this.userRole = userRole;
+	}
+
 	public long getEmployeeId() {
 		return employeeId;
 	}

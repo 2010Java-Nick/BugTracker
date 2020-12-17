@@ -18,13 +18,12 @@ import BugTracker.pojos.Post;
 import BugTracker.pojos.Priority;
 import BugTracker.pojos.Status;
 
+
 public class TicketDto {
 	/**
 	 * Data transfer object to read in Tickets from front-end.
 	 * @author Acacia and Hannah
 	 */
-
-
 	private long ticketId;
 	private long openerId;
 	private long assignedDeveloperId;
