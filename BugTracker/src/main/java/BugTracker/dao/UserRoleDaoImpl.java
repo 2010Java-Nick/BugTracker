@@ -6,35 +6,34 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import BugTracker.pojos.Status;
 import BugTracker.pojos.UserRole;
 
-@Repository(value="userRoleDao")
+@Repository(value = "userRoleDao")
 public class UserRoleDaoImpl implements UserRoleDao {
-	
+
 	SessionFactory sessionFactory;
 
-	
-	
 	@Autowired
 	public UserRoleDaoImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	/**
-	 * createUserRole takes in userRole object, adds to database, returns added object
+	 * createUserRole takes in userRole object, adds to database, returns added
+	 * object
+	 * 
 	 * @param UserRole
 	 * @returns UserRole
 	 * @author Acacia and Hannah
 	 */
-	
-	//TODO test createUserRole in DAO
+
+	// TODO test createUserRole in DAO
 	@Override
 	public UserRole createUserRole(UserRole userRole) {
 		Session sess = sessionFactory.openSession();
@@ -42,23 +41,24 @@ public class UserRoleDaoImpl implements UserRoleDao {
 		sess.save(userRole);
 		tx.commit();
 		sess.close();
-		
-		
+
 		return userRole;
 	}
 
 	/**
-	 * readUserRole takes in a role ID, returns the corresponding object from the database
+	 * readUserRole takes in a role ID, returns the corresponding object from the
+	 * database
+	 * 
 	 * @param long
 	 * @returns UserRole
 	 * @author Acacia and Hannah
 	 */
-	//TODO testing for readUserRole in DAO
+	// TODO testing for readUserRole in DAO
 	@Override
 	public UserRole readUserRole(long userRoleId) {
 		UserRole userRole;
 		Session sess = sessionFactory.openSession();
-		userRole =  sess.get(UserRole.class, userRoleId);
+		userRole = sess.get(UserRole.class, userRoleId);
 		sess.close();
 		return userRole;
 	}
@@ -70,19 +70,21 @@ public class UserRoleDaoImpl implements UserRoleDao {
 	}
 
 	/**
-	 * deleteUserRole function takes in a userRole, then deletes it from the database
+	 * deleteUserRole function takes in a userRole, then deletes it from the
+	 * database
+	 * 
 	 * @param userRole
 	 * @authors Acacia and Hannah
 	 */
 	@Override
 	public void deleteUserRole(UserRole userRole) {
-		
-	Session sess = sessionFactory.openSession();
-	Transaction tx = sess.beginTransaction();
-	sess.delete(userRole);
-	tx.commit();
-	sess.close();
-		
+
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(userRole);
+		tx.commit();
+		sess.close();
+
 	}
 
 }

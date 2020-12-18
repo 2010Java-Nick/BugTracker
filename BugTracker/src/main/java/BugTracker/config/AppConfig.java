@@ -23,11 +23,11 @@ import BugTracker.utils.SessionFactoryUtil;
 @EnableAspectJAutoProxy
 @EnableWebMvc
 public class AppConfig implements WebApplicationInitializer {
-	
+
 	private SessionFactory sessionFactory;
-	
+
 	@Autowired
-	public void setSessionFactory (SessionFactory sessionFactory) {
+	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
@@ -35,14 +35,14 @@ public class AppConfig implements WebApplicationInitializer {
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register(AppConfig.class);
-		
+
 		servletContext.addListener(new ContextLoaderListener(rootContext));
-		
+
 		AnnotationConfigWebApplicationContext dispatchContext = new AnnotationConfigWebApplicationContext();
 
-		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", 
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher",
 				new DispatcherServlet(dispatchContext));
-		
+
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 	}
@@ -51,5 +51,5 @@ public class AppConfig implements WebApplicationInitializer {
 	public SessionFactory sessFactory() {
 		return SessionFactoryUtil.getSessionFactoryUtil().getSessionFactory();
 	}
-	
+
 }

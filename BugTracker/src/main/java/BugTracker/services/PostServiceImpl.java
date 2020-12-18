@@ -13,7 +13,6 @@ import BugTracker.dao.PostDao;
 import BugTracker.dao.TicketDao;
 import BugTracker.dtos.PostDto;
 import BugTracker.pojos.Post;
-import BugTracker.pojos.Ticket;
 
 @Service(value="postService")
 public class PostServiceImpl implements PostService {

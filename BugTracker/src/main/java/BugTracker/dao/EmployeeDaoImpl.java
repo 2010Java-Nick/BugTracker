@@ -12,11 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import BugTracker.dtos.CredentialsDTO;
 import BugTracker.pojos.Employee;
-import BugTracker.pojos.Ticket;
 
 @Repository(value = "employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
-	
+
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -66,14 +65,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public Employee readEmployeeByCredentials(CredentialsDTO credentials) {
 		Session sess = sessionFactory.openSession();
-		Employee employee = sess.createQuery("from Employee where email_address = :em and "
-				+ "employee_password = :pw", Employee.class)
-				.setParameter("em", credentials.getEmail())
-				.setParameter("pw", credentials.getPassword()).getSingleResult();
+		Employee employee = sess
+				.createQuery("from Employee where email_address = :em and " + "employee_password = :pw", Employee.class)
+				.setParameter("em", credentials.getEmail()).setParameter("pw", credentials.getPassword())
+				.getSingleResult();
 		return employee;
 	}
 
@@ -86,7 +85,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		sess.close();
 		return employee;
 	}
-
 
 	@Override
 	public void deleteEmployee(Employee employee) {
@@ -101,30 +99,27 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public Employee findAssigned(long employeeId) {
 		Session sess = sessionFactory.openSession();
-		
+
 		Query query = sess.createQuery("from Employee where not (employee_id = :em) order by num_tickets")
-				.setParameter("em", employeeId)
-				.setMaxResults(1);
-		
-		
+				.setParameter("em", employeeId).setMaxResults(1);
+
 		Employee employee = (Employee) query.getSingleResult();
 
 		return employee;
 	}
-	
+
 	/**
-	 * Get the result List of the Top 5 employees with the most experience points and insert them to a list for the service to unpack and 
-	 * prep it for the user to view.
-	 * @author Vincent
+	 * Get the result List of the Top 5 employees with the most experience points
+	 * and insert them to a list for the service to unpack and prep it for the user
+	 * to view.
 	 */
 	@Override
 	public List<Employee> orderEmployeeByExperience() {
 		Session sess = sessionFactory.openSession();
-		Query query = sess.createQuery("from Employee e order by e.expPoints DESC")
-				.setMaxResults(5);
+		Query query = sess.createQuery("from Employee e order by e.expPoints DESC").setMaxResults(5);
+		@SuppressWarnings("unchecked")
 		List<Employee> employees = (List<Employee>) query.getResultList();
 		return employees;
 	}
-	
 
 }

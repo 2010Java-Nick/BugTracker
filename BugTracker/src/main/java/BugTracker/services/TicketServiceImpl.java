@@ -1,7 +1,6 @@
 package BugTracker.services;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -133,14 +132,6 @@ public class TicketServiceImpl implements TicketService {
 
 		return ticket;
 
-	}
-
-	private Employee assignEmployee(int difficultyLevel) {
-
-		// select all from bug_tracker_employee where exp_points > difficultyLevel * 10
-		// select employee with least number of experience points and
-
-		return null;
 	}
 
 	@Override
