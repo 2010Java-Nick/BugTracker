@@ -21,6 +21,8 @@ public interface TicketDao {
 	
 	public void deleteTicket(Ticket ticket);
 	
+	public List<Ticket>getAllTickets();
+	
 	public List<Ticket> readTicketsByOpener(long openerId);
 	
 	public List<Ticket> readTicketsByAssignedId(long assignedId);

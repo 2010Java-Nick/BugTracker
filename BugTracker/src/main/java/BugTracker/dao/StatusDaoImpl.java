@@ -62,15 +62,4 @@ public class StatusDaoImpl implements StatusDao {
 		return status;
 	}
 
-	@Override
-	public Status updateStatus(long StatusId, Status status) {
-		return null;
-	}
-
-	@Override
-	public void deleteStatus(Status status) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

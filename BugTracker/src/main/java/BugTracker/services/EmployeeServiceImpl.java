@@ -62,4 +62,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	@Override
+	public Employee findAssigned() {
+		return employeeDao.findAssigned();
+	}
+
 }

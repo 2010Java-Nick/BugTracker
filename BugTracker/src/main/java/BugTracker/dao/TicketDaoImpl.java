@@ -113,4 +113,11 @@ public class TicketDaoImpl implements TicketDao {
 		return ticketList;
 	}
 
+	@Override
+	public List<Ticket> getAllTickets() {
+		Session sess = sessionFactory.openSession();
+		List<Ticket> ticketList = sess.createQuery("from Ticket", Ticket.class).getResultList();
+		return ticketList;
+	}
+
 }
