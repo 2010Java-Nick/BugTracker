@@ -38,6 +38,8 @@ public interface PostService {
 	 */
 	public Post updatePost(Post post);
 	
+	public Post toPost(PostDto postDto);
+	
 	
 
 }

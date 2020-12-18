@@ -48,6 +48,8 @@ public class PostDaoImpl implements PostDao {
 		tx.commit();
 		sess.close();
 		
+		
+		
 		return post;
 
 	}
@@ -81,6 +83,10 @@ public class PostDaoImpl implements PostDao {
 		
 	}
 
+	/**
+	 * Fetches the list of Post that the ticket has for the current user to view.
+	 * @author Vincent
+	 */
 	@Override
 	public List<Post> readListPostByTicket(long ticketId) {
 		Session sess = sessionFactory.openSession();
