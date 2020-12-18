@@ -99,7 +99,7 @@ public class DaoTest {
 		
 
 		
-		ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, null, employee2);
+		ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, employee2);
 
 		
 	}
@@ -162,7 +162,7 @@ public class DaoTest {
 	
 	@Test
 	public void deleteTicketTest() {
-		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, null, employee2);
+		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, employee2);
 		ticketDao.createTicket(ticket);
 		long ticketId = ticket.getTicketId();
 		ticketDao.deleteTicket(ticket);
@@ -195,7 +195,7 @@ public class DaoTest {
 	
 	@Test
 	public void findAssignedTest() {
-		Employee employee = employeeDao.findAssigned();
+		Employee employee = employeeDao.findAssigned(employee1.getEmployeeId());
 		assertEquals(employee, employee1);
 	}
 	

@@ -51,7 +51,7 @@ public class TicketServiceTest {
 		Status opened = new Status("Opened");
 		Employee employee1 = new Employee(91, "Acacia", "Holliday", "aholliday@gmail.com", 0, developer, 0);
 		Employee employee2 = new Employee(92, "Hannah", "Novack", "hNovack@gmail.com", 0, developer, 0);
-		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, null, employee2);
+		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, employee2);
 		
 	}
 
@@ -67,7 +67,7 @@ public class TicketServiceTest {
 		Status opened = new Status("Opened");
 		Employee employee1 = new Employee(91, "Acacia", "Holliday", "aholliday@gmail.com", 0, developer, 0);
 		Employee employee2 = new Employee(92, "Hannah", "Novack", "hNovack@gmail.com", 0, developer, 0);
-		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, null, employee2);
+		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),opened, priority1, 3, employee2);
 		when(ticketDao.createTicket(ticket)).thenReturn(ticket);
 	
 		//assertEquals(ticket, ticketService.createTicket(ticket));
