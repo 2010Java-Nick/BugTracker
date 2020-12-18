@@ -67,16 +67,4 @@ public class PriorityDaoImpl implements PriorityDao {
 		
 	}
 
-	@Override
-	public Priority updatePriority(long priorityId, Priority priority) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deletePriority(Priority priority) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

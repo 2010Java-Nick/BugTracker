@@ -8,8 +8,6 @@ public interface UserRoleDao {
 	
 	public UserRole readUserRole(long userRoleId);
 	
-	public UserRole updateUserRole(long userRoleId, UserRole userRole);
-	
 	public void deleteUserRole(UserRole userRole);
 
 }

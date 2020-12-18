@@ -14,7 +14,7 @@ public interface PostDao {
 	
 	public Post readPost(long postId);
 	
-	public Post updatePost(long postId, Post post);
+	public Post updatePost(Post post);
 	
 	public void deletePost(Post post);
 

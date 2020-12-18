@@ -36,7 +36,7 @@ public class TicketDto {
 		this.statusId = statusId;
 		this.priorityId = priorityId;
 		this.difficultyLevel = difficultyLevel;
-		this.setBody(body);
+		this.body = body;
 	}
 
 

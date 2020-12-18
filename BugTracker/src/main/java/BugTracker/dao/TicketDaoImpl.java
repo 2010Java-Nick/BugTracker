@@ -1,11 +1,14 @@
 package BugTracker.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import BugTracker.pojos.Employee;
 import BugTracker.pojos.Ticket;
 
 @Repository(value="ticketDao")
@@ -58,8 +61,13 @@ public class TicketDaoImpl implements TicketDao {
 
 	@Override
 	public Ticket updateTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-		return null;
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(ticket);
+		tx.commit();
+		sess.close();
+		
+		return ticket;
 	}
 
 	@Override
@@ -71,6 +79,38 @@ public class TicketDaoImpl implements TicketDao {
 		sess.close();
 		
 
+	}
+
+	/**
+	 * this method takes in an employee id and returns all tickets in the database that were opened
+	 * by that employee
+	 * 
+	 * @param long
+	 * @returns List<Ticket>
+	 * @author Acacia and Hannah
+	 */
+	@Override
+	public List<Ticket> readTicketsByOpener(long openerId) {
+		Session sess = sessionFactory.openSession();
+		List<Ticket> ticketList = sess.createQuery("from Ticket where opener_id = :id", Ticket.class)
+				.setParameter("id", openerId).getResultList();
+		return ticketList;
+	}
+
+	/**
+	 * this method takes in an employee id and returns all tickets in the database that were assigned
+	 * to that employee
+	 * 
+	 * @param long
+	 * @returns List<Ticket>
+	 * @author Acacia and Hannah
+	 */
+	@Override
+	public List<Ticket> readTicketsByAssignedId(long assignedId) {
+		Session sess = sessionFactory.openSession();
+		List<Ticket> ticketList = sess.createQuery("from Ticket where employee_id = :id", Ticket.class)
+				.setParameter("id", assignedId).getResultList();
+		return ticketList;
 	}
 
 }

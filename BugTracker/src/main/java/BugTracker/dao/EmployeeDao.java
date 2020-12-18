@@ -1,5 +1,7 @@
 package BugTracker.dao;
 
+import java.util.List;
+
 import BugTracker.dtos.CredentialsDTO;
 import BugTracker.pojos.Employee;
 
@@ -24,4 +26,13 @@ public interface EmployeeDao {
 	public void deleteEmployee(Employee employee);
 
 	public Employee findAssigned();
+
+	List<Employee> leaderBoard();
+
+	/**
+	 * readAllEmployees returns all the employees in the database
+	 * @returns List<Employee> 
+	 * @author Acacia and Hannah
+	 */
+	List<Employee> readAllEmployees();
 }
