@@ -55,8 +55,7 @@ public class Ticket {
 	@Column(name = "difficulty_level")
 	private int difficultyLevel;
 	
-	@OneToMany (cascade= {CascadeType.ALL})
-	@JoinColumn(name = "post_id")
+	@OneToMany (cascade= {CascadeType.ALL }, mappedBy = "ticket")
 	private List<Post> comments = new ArrayList<>();
 	
 	public Ticket() {
@@ -64,7 +63,7 @@ public class Ticket {
 	}
 
 	public Ticket(Employee opener, String name, LocalDateTime created, Status status, Priority priority,
-			int difficultyLevel, List<Post> comments, Employee assignedDeveloper) {
+			int difficultyLevel, Employee assignedDeveloper) {
 		super();
 		this.opener = opener;
 		this.name = name;
@@ -72,7 +71,6 @@ public class Ticket {
 		this.status = status;
 		this.priority = priority;
 		this.difficultyLevel = difficultyLevel;
-		this.comments = comments;
 		this.assignedDeveloper = assignedDeveloper;
 	}
 

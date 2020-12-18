@@ -99,10 +99,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee findAssigned() {
+	public Employee findAssigned(long employeeId) {
 		Session sess = sessionFactory.openSession();
 		
-		Query query = sess.createQuery("from Employee order by num_tickets").setMaxResults(1);
+		Query query = sess.createQuery("from Employee where not (employee_id = :em) order by num_tickets")
+				.setParameter("em", employeeId)
+				.setMaxResults(1);
 		
 		
 		Employee employee = (Employee) query.getSingleResult();
