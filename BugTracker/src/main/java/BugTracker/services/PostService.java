@@ -2,6 +2,7 @@ package BugTracker.services;
 
 import java.util.List;
 
+import BugTracker.dtos.PostDto;
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Ticket;
 
@@ -28,7 +29,7 @@ public interface PostService {
 	 * Returns a List of Posts of a given Ticket.
 	 * @author Vincent
 	 */
-	public List<Post> getAllPostsInTicket(Ticket ticket);
+	public List<Post> getAllPostsInTicket(long ticketId);
 	
 	/**
 	 * 

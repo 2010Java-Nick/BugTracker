@@ -1,5 +1,7 @@
 package BugTracker.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Status;
+import BugTracker.pojos.Ticket;
 
 @Repository(value = "postDao")
 public class PostDaoImpl implements PostDao {
@@ -78,4 +81,15 @@ public class PostDaoImpl implements PostDao {
 		
 	}
 
+	@Override
+	public List<Post> readListPostByTicket(long ticketId) {
+		Session sess = sessionFactory.openSession();
+		List<Post> posts = (List<Post>) sess.createSQLQuery("SELECT * FROM bug_tracker_post where ticket_id = :ticket")
+				.setParameter("ticket",ticketId)
+				.addEntity(Post.class)
+				.list();
+		return posts;
+	}
+
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import BugTracker.dao.PostDao;
+import BugTracker.dtos.PostDto;
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Ticket;
 
@@ -46,7 +47,6 @@ public class PostServiceImpl implements PostService {
 	@Override
 	public Post createPost(Post post) {
 		return postDao.createPost(post);
-
 	}
 
 	@Override
@@ -56,9 +56,8 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	public List<Post> getAllPostsInTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Post> getAllPostsInTicket(long ticketId) {
+		return postDao.readListPostByTicket(ticketId);
 	}
 
 	@Override

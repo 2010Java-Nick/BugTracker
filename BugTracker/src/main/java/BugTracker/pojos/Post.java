@@ -41,6 +41,17 @@ public class Post {
 
 	
 	
+	public Post(long postId, Employee author, String body, LocalDateTime created, Ticket ticket) {
+		super();
+		this.postId = postId;
+		this.author = author;
+		this.body = body;
+		this.created = created;
+		this.ticket = ticket;
+	}
+
+
+
 	public Post(Employee author, String body, LocalDateTime created, Ticket ticket) {
 		super();
 		

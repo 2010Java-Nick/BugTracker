@@ -36,6 +36,7 @@ public class TicketServiceTest {
 	TicketServiceImpl ticketService;
 	
 	
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -71,6 +72,11 @@ public class TicketServiceTest {
 		when(ticketDao.createTicket(ticket)).thenReturn(ticket);
 	
 		//assertEquals(ticket, ticketService.createTicket(ticket));
+		
+	}
+	
+	@Test
+	public void postListServiceTest() {
 		
 	}
 
