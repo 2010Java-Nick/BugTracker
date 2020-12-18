@@ -12,11 +12,7 @@ public interface PriorityDao {
 	
 public Priority createPriority(Priority priority);
 	
-	public Priority readPriorityById(long priorityId);
-		
-	public Priority updatePriority(long priorityId, Priority priority);
+public Priority readPriorityById(long priorityId);
 	
-	public void deletePriority(Priority priority);
-
 
 }

@@ -65,16 +65,34 @@ public class PostDaoImpl implements PostDao {
 		sess.close();
 		return post;
 	}
-
+	
+	
+	/**
+	 * updatePost takes in a post and updates that post in the database
+	 * @param post
+	 * @return Post
+	 * @authors Acacia and Hannah
+	 */
 	@Override
-	public Post updatePost(long postId, Post post) {
-		// TODO Auto-generated method stub
-		return null;
+	public Post updatePost(Post post) {
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(post);
+		tx.commit();
+		return post;
 	}
 
+	/**
+	 * deletePost takes in a post and deletes that post from the database
+	 * @param Post
+	 * @authors Acacia and Hannah
+	 */
 	@Override
 	public void deletePost(Post post) {
-		// TODO Auto-generated method stub
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(post);
+		tx.commit();
 		
 	}
 

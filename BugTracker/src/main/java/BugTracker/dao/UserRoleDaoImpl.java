@@ -62,18 +62,7 @@ public class UserRoleDaoImpl implements UserRoleDao {
 		sess.close();
 		return userRole;
 	}
-
-	@Override
-	public UserRole updateUserRole(long userRoleId, UserRole userRole) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * deleteUserRole function takes in a userRole, then deletes it from the database
-	 * @param userRole
-	 * @authors Acacia and Hannah
-	 */
+	
 	@Override
 	public void deleteUserRole(UserRole userRole) {
 		

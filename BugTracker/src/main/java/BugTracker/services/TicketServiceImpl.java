@@ -67,26 +67,22 @@ public class TicketServiceImpl implements TicketService {
 	
 	@Override
 	public Ticket getTicket(long ticketId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicket(ticketId);
 	}
 
 	@Override
 	public List<Ticket> getAllTickets() {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.getAllTickets();
 	}
 
 	@Override
 	public List<Ticket> getAllTicketsByOpener(long employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicketsByOpener(employeeId);
 	}
 
 	@Override
 	public List<Ticket> getAllTicketsByAssigned(long employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicketsByAssignedId(employeeId);
 	}
 	
 	/**
@@ -109,37 +105,30 @@ public class TicketServiceImpl implements TicketService {
 		
 		//call dao
 		
-		Employee assigned = employeeDao.findAssigned();
+		Employee assigned = employeeService.findAssigned();
 		
 		int currentTickets = assigned.getNumTickets();
 		currentTickets++;
 		assigned.setNumTickets(currentTickets);
 		
 		employeeDao.updateEmployee(assigned);
-		Ticket ticket = new Ticket(opener, ticketDto.getName(), ticketDto.getCreated(),
+		Ticket ticket = new Ticket(opener, ticketDto.getName(), LocalDateTime.now(),
 				status, priority, ticketDto.getDifficultyLevel(), postList, assigned);
+		Ticket newTicket = ticketDao.createTicket(ticket);
 	
-		return ticketDao.createTicket(ticket);
+		return newTicket;
 	}
 	
-	private Employee assignEmployee(int difficultyLevel) {
-		
-		// select all from bug_tracker_employee where exp_points > difficultyLevel * 10 
-		// select employee with least number of experience points and 
-		
-		
-		return null;
-	}
+	
 
 	@Override
-	public Ticket updateTicket(long ticketId, Ticket ticket) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ticket updateTicket( Ticket ticket) {
+		return ticketDao.updateTicket(ticket);
 	}
 
 	@Override
 	public void deleteTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
+		ticketDao.deleteTicket(ticket);
 		
 	}
 
