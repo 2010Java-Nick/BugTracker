@@ -2,13 +2,10 @@ package BugTracker.dtos;
 
 import java.time.LocalDateTime;
 
-
-
-
-
 public class TicketDto {
 	/**
 	 * Data transfer object to read in Tickets from front-end.
+	 * 
 	 * @author Acacia and Hannah
 	 */
 	private long openerId;
@@ -17,17 +14,13 @@ public class TicketDto {
 	private long priorityId;
 	private int difficultyLevel;
 	private String body;
-	
-	//TODO in front end, add difficulty level and body
+
+	// TODO in front end, add difficulty level and body
 	public TicketDto() {
 		super();
 	}
 
-
-
-
-	public TicketDto(long openerId, String name, long statusId, long priorityId,
-			int difficultyLevel, String body) {
+	public TicketDto(long openerId, String name, long statusId, long priorityId, int difficultyLevel, String body) {
 		super();
 		this.openerId = openerId;
 		this.name = name;
@@ -37,12 +30,10 @@ public class TicketDto {
 		this.body = body;
 	}
 
-
-
-
 	public long getOpenerId() {
 		return openerId;
 	}
+
 	public void setOpenerId(long openerId) {
 		this.openerId = openerId;
 	}
@@ -50,46 +41,42 @@ public class TicketDto {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
 	public long getStatusId() {
 		return statusId;
 	}
+
 	public void setStatusId(long statusId) {
 		this.statusId = statusId;
 	}
+
 	public long getPriorityId() {
 		return priorityId;
 	}
+
 	public void setPriorityId(long priorityId) {
 		this.priorityId = priorityId;
 	}
+
 	public int getDifficultyLevel() {
 		return difficultyLevel;
 	}
+
 	public void setDifficultyLevel(int difficultyLevel) {
 		this.difficultyLevel = difficultyLevel;
 	}
-
-
-
 
 	public String getBody() {
 		return body;
 	}
 
-
-
-
 	public void setBody(String body) {
 		this.body = body;
 	}
-
-
-
 
 	@Override
 	public int hashCode() {
@@ -103,9 +90,6 @@ public class TicketDto {
 		result = prime * result + (int) (statusId ^ (statusId >>> 32));
 		return result;
 	}
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -137,34 +121,10 @@ public class TicketDto {
 		return true;
 	}
 
-
-
-
 	@Override
 	public String toString() {
 		return "TicketDto [openerId=" + openerId + ", name=" + name + ", statusId=" + statusId + ", priorityId="
 				+ priorityId + ", difficultyLevel=" + difficultyLevel + ", body=" + body + "]";
 	}
-	
-	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
 }

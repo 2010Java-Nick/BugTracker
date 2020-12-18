@@ -16,7 +16,7 @@ import BugTracker.pojos.Ticket;
 
 @Repository(value = "employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
-	
+
 	@Autowired
 	SessionFactory sessionFactory;
 
@@ -52,7 +52,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	/**
-	 * readEmployeeById takes in employee id, returns corresponding employee from database
+	 * readEmployeeById takes in employee id, returns corresponding employee from
+	 * database
+	 * 
 	 * @param long
 	 * @returns Employee
 	 * @author Acacia and Hannah
@@ -68,7 +70,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	/**
-	 * readEmployeeByEmail takes in an email and returns the corresponding employee from the database
+	 * readEmployeeByEmail takes in an email and returns the corresponding employee
+	 * from the database
+	 * 
 	 * @param String
 	 * @returns Employee
 	 * @authors Acacia and Hannah
@@ -80,10 +84,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				.setParameter("em", email).getSingleResult();
 		return employee;
 	}
-	
-	
+
 	/**
-	 * readEmployeeByCredentials takes in a credential dto and returns the corresponding employee from the database
+	 * readEmployeeByCredentials takes in a credential dto and returns the
+	 * corresponding employee from the database
+	 * 
 	 * @param CredentialsDTO
 	 * @returns Employee
 	 * @authors Vincent and Ksenia
@@ -91,10 +96,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public Employee readEmployeeByCredentials(CredentialsDTO credentials) {
 		Session sess = sessionFactory.openSession();
-		Employee employee = sess.createQuery("from Employee where email_address = :em and "
-				+ "employee_password = :pw", Employee.class)
-				.setParameter("em", credentials.getEmail())
-				.setParameter("pw", credentials.getPassword()).getSingleResult();
+		Employee employee = sess
+				.createQuery("from Employee where email_address = :em and " + "employee_password = :pw", Employee.class)
+				.setParameter("em", credentials.getEmail()).setParameter("pw", credentials.getPassword())
+				.getSingleResult();
 		return employee;
 	}
 
@@ -108,7 +113,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return employee;
 	}
 
-
 	@Override
 	public void deleteEmployee(Employee employee) {
 		Session sess = sessionFactory.openSession();
@@ -120,40 +124,36 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	/**
-	 * method findAssigned creates a query which orders employees based on how many tickets
-	 * they have been assigned to, then selects the employee with the least number
+	 * method findAssigned creates a query which orders employees based on how many
+	 * tickets they have been assigned to, then selects the employee with the least
+	 * number
+	 * 
 	 * @return Employee
 	 * @author Acacia and Hannah
 	 */
 	@Override
 	public Employee findAssigned() {
 		Session sess = sessionFactory.openSession();
-		
+
 		Query query = sess.createQuery("from Employee order by num_tickets").setMaxResults(1);
-		
-		
+
 		Employee employee = (Employee) query.getSingleResult();
 
 		return employee;
 	}
 
-	@Override
-	public List<Employee> leaderBoard() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/**
 	 * readAllEmployees returns all the employees in the database
-	 * @returns List<Employee> 
+	 * 
+	 * @returns List<Employee>
 	 * @author Acacia and Hannah
 	 */
 	@Override
 	public List<Employee> readAllEmployees() {
 		Session sess = sessionFactory.openSession();
-		
+
 		List<Employee> employeeList = (List<Employee>) sess.createQuery("from Employee");
-		
+
 		return employeeList;
 	}
 
