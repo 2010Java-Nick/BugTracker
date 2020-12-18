@@ -1,5 +1,7 @@
 package BugTracker.dao;
 
+import java.util.List;
+
 import BugTracker.dtos.CredentialsDTO;
 import BugTracker.pojos.Employee;
 
@@ -24,4 +26,6 @@ public interface EmployeeDao {
 	public void deleteEmployee(Employee employee);
 
 	public Employee findAssigned(long employeeId);
+	
+	public List<Employee> orderEmployeeByExperience();
 }

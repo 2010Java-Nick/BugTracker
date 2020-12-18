@@ -111,5 +111,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 		return employee;
 	}
+	
+	/**
+	 * Get the result List of the Top 5 employees with the most experience points and insert them to a list for the service to unpack and 
+	 * prep it for the user to view.
+	 * @author Vincent
+	 */
+	@Override
+	public List<Employee> orderEmployeeByExperience() {
+		Session sess = sessionFactory.openSession();
+		Query query = sess.createQuery("from Employee e order by e.expPoints DESC")
+				.setMaxResults(5);
+		List<Employee> employees = (List<Employee>) query.getResultList();
+		return employees;
+	}
+	
 
 }
