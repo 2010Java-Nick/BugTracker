@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import BugTracker.dao.EmployeeDao;
@@ -107,7 +108,7 @@ public class TicketServiceTest {
 		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(), opened, priority1, 10, postList,
 				employee2);
 		
-		when(ticketDao.createTicket(ticket)).thenReturn(ticket);
+		when(ticketDao.createTicket(Mockito.any(Ticket.class))).thenReturn(ticket);
 		
 		Ticket testTicket = ticketService.createTicket(testDto);
 	

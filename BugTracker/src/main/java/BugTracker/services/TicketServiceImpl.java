@@ -114,8 +114,9 @@ public class TicketServiceImpl implements TicketService {
 		employeeDao.updateEmployee(assigned);
 		Ticket ticket = new Ticket(opener, ticketDto.getName(), LocalDateTime.now(),
 				status, priority, ticketDto.getDifficultyLevel(), postList, assigned);
+		Ticket newTicket = ticketDao.createTicket(ticket);
 	
-		return ticketDao.createTicket(ticket);
+		return newTicket;
 	}
 	
 	
