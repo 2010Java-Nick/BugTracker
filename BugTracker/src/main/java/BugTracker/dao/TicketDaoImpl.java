@@ -8,52 +8,52 @@ import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Ticket;
 
-@Repository(value="ticketDao")
+@Repository(value = "ticketDao")
 
 public class TicketDaoImpl implements TicketDao {
-	
+
 	@Autowired
 	public SessionFactory sessionFactory;
-	
+
 	@Autowired
 	public TicketDaoImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	/**
-	 * createTicket takes in a new ticket, 
-	 * adds it to the database, and returns the added ticket
+	 * createTicket takes in a new ticket, adds it to the database, and returns the
+	 * added ticket
+	 * 
 	 * @params ticket
 	 * @returns ticket
 	 */
 	@Override
 	public Ticket createTicket(Ticket ticket) {
-		
+
 		Session sess = sessionFactory.openSession();
 		Transaction tx = sess.beginTransaction();
 		sess.save(ticket);
 		tx.commit();
 		sess.close();
-		
-		
+
 		return ticket;
 
 	}
 
 	@Override
-	public Ticket readTicket(long ticketId) { 
+	public Ticket readTicket(long ticketId) {
 		Ticket ticket;
 		Session sess = sessionFactory.openSession();
-		ticket =  sess.get( Ticket.class, ticketId);
+		ticket = sess.get(Ticket.class, ticketId);
 		sess.close();
 		return ticket;
-		
+
 	}
 
 	@Override
@@ -69,7 +69,6 @@ public class TicketDaoImpl implements TicketDao {
 		sess.delete(ticket);
 		tx.commit();
 		sess.close();
-		
 
 	}
 

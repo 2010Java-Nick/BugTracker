@@ -16,5 +16,7 @@ public interface EmployeeService {
 	public Employee updateTicket(long employeeId, Employee employee);
 	
 	public void deleteEmployee(Employee employee);
+	
+	public List<Employee> viewLeaderBoard();
 
 }

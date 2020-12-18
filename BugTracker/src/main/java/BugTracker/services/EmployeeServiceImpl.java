@@ -62,4 +62,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 	}
 
+	/**
+	 * Service to get the leaderboard info and send it to the frontend to view.
+	 * @author Vincent
+	 */
+	@Override
+	public List<Employee> viewLeaderBoard() {
+		return employeeDao.orderEmployeeByExperience();
+	}
+
 }

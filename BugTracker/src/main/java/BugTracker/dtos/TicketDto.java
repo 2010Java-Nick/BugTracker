@@ -1,14 +1,16 @@
 package BugTracker.dtos;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-/**
- * Data transfer object to read in Tickets from front-end.
- * @author Acacia and Hannah
- */
+
+
+
+
 public class TicketDto {
-
+	/**
+	 * Data transfer object to read in Tickets from front-end.
+	 * @author Acacia and Hannah
+	 */
 	private long openerId;
 	private String name;
 	private LocalDateTime created;
