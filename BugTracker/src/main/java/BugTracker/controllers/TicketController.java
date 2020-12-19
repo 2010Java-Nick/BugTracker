@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +42,7 @@ public class TicketController {
 	 * @author Acacia and Hannah
 	 */
 	// TODO test createTicket in Ticket Controller
+	@CrossOrigin
 	@RequestMapping(path = "/ticket", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto ticketDto) {
