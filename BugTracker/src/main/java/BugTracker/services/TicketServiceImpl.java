@@ -76,26 +76,22 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public Ticket getTicket(long ticketId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicket(ticketId);
 	}
 
 	@Override
 	public List<Ticket> getAllTickets() {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.getAllTickets();
 	}
 
 	@Override
 	public List<Ticket> getAllTicketsByOpener(long employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicketsByOpener(employeeId);
 	}
 
 	@Override
 	public List<Ticket> getAllTicketsByAssigned(long employeeId) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.readTicketsByAssignedId(employeeId);
 	}
 
 	/**

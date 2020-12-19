@@ -69,10 +69,20 @@ public class TicketController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(path = "/ticket", method = RequestMethod.GET)
+	@RequestMapping(path = "/opened", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Ticket>> getAllTickets() {
-		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTickets(), 
+	public ResponseEntity<List<Ticket>> getAllTicketsByOpener(@RequestBody long employeeId) {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByOpener(employeeId), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/assigned", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Ticket>> getAllTicketsByAssigned(@RequestBody long employeeId) {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByOpener(employeeId), 
 				HttpStatus.OK);
 	
 		return rEntity;
