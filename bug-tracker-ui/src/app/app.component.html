@@ -1,1 +1,9 @@
+<h1>Test Http Angular Basics</h1>
+
 <app-ticket-form></app-ticket-form>
+
+<button (click) = "getBoards()">Get Boards</button>
+<div *ngFor = "let board of boards | async">
+    {{board | json}}
+</div>
+
