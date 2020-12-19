@@ -27,13 +27,11 @@ public class TicketDto {
 
 
 
-	public TicketDto(long openerId, String name, LocalDateTime created, long statusId, long priorityId,
+	public TicketDto(long openerId, String name, long priorityId,
 			int difficultyLevel, String body) {
 		super();
 		this.openerId = openerId;
 		this.name = name;
-		this.created = created;
-		this.statusId = statusId;
 		this.priorityId = priorityId;
 		this.difficultyLevel = difficultyLevel;
 		this.setBody(body);
