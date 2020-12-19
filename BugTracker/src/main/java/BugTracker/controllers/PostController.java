@@ -1,10 +1,13 @@
 package BugTracker.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import BugTracker.dtos.PostDto;
 import BugTracker.pojos.Post;
+import BugTracker.pojos.Ticket;
 import BugTracker.services.PostService;
 
 @Controller
@@ -44,8 +48,14 @@ public class PostController {
 	}
 	
 	
-	public PostController() {
-		// TODO Auto-generated constructor stub
+	@CrossOrigin
+	@RequestMapping(path = "/post/{ticketId}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Post>> getAllPostsByTicketId(@RequestBody long ticketId) {
+		ResponseEntity<List<Post>> rEntity = new ResponseEntity<List<Post>>(postService.getAllPostsInTicket(ticketId), 
+				HttpStatus.OK);
+	
+		return rEntity;
 	}
 
 }

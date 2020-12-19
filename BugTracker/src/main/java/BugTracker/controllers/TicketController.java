@@ -82,10 +82,24 @@ public class TicketController {
 	@RequestMapping(path = "/assigned", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Ticket>> getAllTicketsByAssigned(@RequestBody long employeeId) {
-		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByOpener(employeeId), 
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByAssigned(employeeId), 
 				HttpStatus.OK);
 	
 		return rEntity;
 	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/assigned/{ticketId}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Ticket> getTicket(@RequestBody long ticketId) {
+		ResponseEntity<Ticket> rEntity = new ResponseEntity<Ticket>(ticketService.getTicket(ticketId), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	//need to see all posts associated with a ticket
+	
+	
 }
 
