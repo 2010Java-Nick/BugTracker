@@ -70,11 +70,21 @@ public class PostDaoImpl implements PostDao {
 		sess.close();
 		return post;
 	}
-
+	/**
+	 * updatePost takes in a post and updates that post in the database
+	 * @param post
+	 * @return Post
+	 * @authors Acacia and Hannah
+	 */
 	@Override
 	public Post updatePost(long postId, Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session sess = sessionFactory.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.update(post);
+		tx.commit();
+		return post;
+				
 	}
 
 	@Override
