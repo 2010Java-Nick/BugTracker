@@ -18,7 +18,7 @@ public interface TicketService {
 	
 	public Ticket createTicket(TicketDto ticketDto);
 	
-	public Ticket updateTicket( Ticket ticket);
+	public Ticket updateTicket(Ticket ticket);
 	
 	public void deleteTicket(Ticket ticket);
 	

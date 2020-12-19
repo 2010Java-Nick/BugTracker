@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.mockito.InjectMocks;
@@ -17,11 +18,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import BugTracker.config.AppConfig;
 import BugTracker.dao.EmployeeDao;
 import BugTracker.dao.EmployeeDaoImpl;
+import BugTracker.dao.PostDaoImpl;
 import BugTracker.dao.TicketDao;
 import BugTracker.dao.TicketDaoImpl;
 import BugTracker.dao.UserRoleDao;
 import BugTracker.dao.UserRoleDaoImpl;
 import BugTracker.pojos.Employee;
+import BugTracker.pojos.Post;
 import BugTracker.pojos.Priority;
 import BugTracker.pojos.Status;
 import BugTracker.pojos.Ticket;
@@ -49,6 +52,9 @@ public class DaoTest {
 	
 	@Autowired
 	TicketDaoImpl ticketDao;
+	
+	@Autowired
+	PostDaoImpl postDao;
 	
 	@Autowired
 	UserRoleDaoImpl userRoleDao;
@@ -99,7 +105,7 @@ public class DaoTest {
 		
 
 		
-		ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, null, employee2);
+		ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, employee2);
 
 		
 	}
@@ -162,7 +168,7 @@ public class DaoTest {
 	
 	@Test
 	public void deleteTicketTest() {
-		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, null, employee2);
+		Ticket ticket = new Ticket(employee1, "Test ticket", LocalDateTime.now(),status, priority1, 3, employee2);
 		ticketDao.createTicket(ticket);
 		long ticketId = ticket.getTicketId();
 		ticketDao.deleteTicket(ticket);
@@ -195,9 +201,15 @@ public class DaoTest {
 	
 	@Test
 	public void findAssignedTest() {
-		Employee employee = employeeDao.findAssigned();
+		Employee employee = employeeDao.findAssigned(employee1.getEmployeeId());
 		assertEquals(employee, employee1);
 	}
 	
+	
+	@Test
+	public void getListofPost() {
+		List<Post> posts = postDao.readListPostByTicket(27);
+		assertEquals(2, posts.size());
+	}
 
 }

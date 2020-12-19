@@ -31,10 +31,37 @@ public class Post {
 	private Employee author;
 	private String body;
 	private LocalDateTime created;
+	@ManyToOne
+	@JoinColumn(name = "ticket_id")
+	private Ticket ticket;
 
 	public Post() {
 		super();
 	}
+
+	
+	
+	public Post(long postId, Employee author, String body, LocalDateTime created, Ticket ticket) {
+		super();
+		this.postId = postId;
+		this.author = author;
+		this.body = body;
+		this.created = created;
+		this.ticket = ticket;
+	}
+
+
+
+	public Post(Employee author, String body, LocalDateTime created, Ticket ticket) {
+		super();
+		
+		this.author = author;
+		this.body = body;
+		this.created = created;
+		this.ticket = ticket;
+	}
+
+
 
 	public Post(Employee author, String body, LocalDateTime created) {
 		super();
@@ -50,6 +77,18 @@ public class Post {
 		this.body = body;
 		this.created = created;
 	}
+
+	public Ticket getTicket() {
+		return ticket;
+	}
+
+
+
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+
+
 
 	public long getPostId() {
 		return postId;

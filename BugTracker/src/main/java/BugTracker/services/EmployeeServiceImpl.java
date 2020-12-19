@@ -61,10 +61,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return null;
 		
 	}
+	
+	@Override
+	public List<Employee> viewLeaderBoard() {
+		return employeeDao.orderEmployeeByExperience();
+	}
 
 	@Override
-	public Employee findAssigned() {
-		return employeeDao.findAssigned();
+	public Employee findAssigned(long assignedId) {
+		return employeeDao.findAssigned(assignedId);
 	}
 
 }
