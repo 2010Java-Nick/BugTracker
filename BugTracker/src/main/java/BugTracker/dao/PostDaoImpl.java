@@ -1,5 +1,7 @@
 package BugTracker.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import BugTracker.pojos.Post;
 import BugTracker.pojos.Status;
+import BugTracker.pojos.Ticket;
 
 @Repository(value = "postDao")
 public class PostDaoImpl implements PostDao {
@@ -45,6 +48,8 @@ public class PostDaoImpl implements PostDao {
 		tx.commit();
 		sess.close();
 		
+		
+		
 		return post;
 
 	}
@@ -65,35 +70,32 @@ public class PostDaoImpl implements PostDao {
 		sess.close();
 		return post;
 	}
-	
-	
-	/**
-	 * updatePost takes in a post and updates that post in the database
-	 * @param post
-	 * @return Post
-	 * @authors Acacia and Hannah
-	 */
+
 	@Override
-	public Post updatePost(Post post) {
-		Session sess = sessionFactory.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.update(post);
-		tx.commit();
-		return post;
+	public Post updatePost(long postId, Post post) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	/**
-	 * deletePost takes in a post and deletes that post from the database
-	 * @param Post
-	 * @authors Acacia and Hannah
-	 */
 	@Override
 	public void deletePost(Post post) {
-		Session sess = sessionFactory.openSession();
-		Transaction tx = sess.beginTransaction();
-		sess.delete(post);
-		tx.commit();
+		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Fetches the list of Post that the ticket has for the current user to view.
+	 * @author Vincent
+	 */
+	@Override
+	public List<Post> readListPostByTicket(long ticketId) {
+		Session sess = sessionFactory.openSession();
+		List<Post> posts = (List<Post>) sess.createSQLQuery("SELECT * FROM bug_tracker_post where ticket_id = :ticket")
+				.setParameter("ticket",ticketId)
+				.addEntity(Post.class)
+				.list();
+		return posts;
+	}
+
+	
 }

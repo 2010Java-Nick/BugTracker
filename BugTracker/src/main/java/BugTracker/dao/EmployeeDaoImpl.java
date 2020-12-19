@@ -132,11 +132,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 * @author Acacia and Hannah
 	 */
 	@Override
-	public Employee findAssigned() {
+	public Employee findAssigned(long employeeId) {
 		Session sess = sessionFactory.openSession();
-
-		Query query = sess.createQuery("from Employee order by num_tickets").setMaxResults(1);
-
+		
+		Query query = sess.createQuery("from Employee where not (employee_id = :em) order by num_tickets")
+				.setParameter("em", employeeId)
+				.setMaxResults(1);
+		
+		
 		Employee employee = (Employee) query.getSingleResult();
 
 		return employee;
@@ -148,6 +151,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	 * @returns List<Employee>
 	 * @author Acacia and Hannah
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> readAllEmployees() {
 		Session sess = sessionFactory.openSession();
@@ -155,6 +159,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		List<Employee> employeeList = (List<Employee>) sess.createQuery("from Employee");
 
 		return employeeList;
+	}
+	
+	/**
+	 * Get the result List of the Top 5 employees with the most experience points and insert them to a list for the service to unpack and 
+	 * prep it for the user to view.
+	 * @author Vincent
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Employee> orderEmployeeByExperience() {
+		Session sess = sessionFactory.openSession();
+		Query query = sess.createQuery("from Employee e order by e.expPoints DESC")
+				.setMaxResults(5);
+		List<Employee> employees = (List<Employee>) query.getResultList();
+		return employees;
 	}
 
 }

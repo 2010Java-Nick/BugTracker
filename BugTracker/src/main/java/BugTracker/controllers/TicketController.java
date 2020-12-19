@@ -18,38 +18,38 @@ import BugTracker.services.TicketService;
 public class TicketController {
 	TicketService ticketService;
 	EmployeeService employeeService;
-	
-	
+
 	@Autowired
-	@Qualifier(value="ticketService")
+	@Qualifier(value = "ticketService")
 	public void setTicketService(TicketService ticketService) {
 		this.ticketService = ticketService;
 	}
-	
+
 	@Autowired
 	@Qualifier(value = "employeeService")
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
-	
+
 	/**
 	 * createTicket in Ticket controller takes in a ticketDTO from the front end,
-	 * calls the service to create the ticket in the database, then creates a new response
-	 * entity and returns that
+	 * calls the service to create the ticket in the database, then creates a new
+	 * response entity and returns that
+	 * 
 	 * @param ticketDto
 	 * @return ResponseEntity<TicketDto>
 	 * @author Acacia and Hannah
 	 */
-	//TODO test createTicket in Ticket Controller
+	// TODO test createTicket in Ticket Controller
 	@RequestMapping(path = "/ticket", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<TicketDto> createTicket(@RequestBody TicketDto ticketDto) {
-		
+
 		ticketService.createTicket(ticketDto);
-		
+
 		ResponseEntity<TicketDto> rEntity = new ResponseEntity<TicketDto>(ticketDto, HttpStatus.CREATED);
-		
+
 		return rEntity;
-		
-	}	
+
+	}
 }

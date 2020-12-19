@@ -17,6 +17,8 @@ public interface EmployeeService {
 	
 	public void deleteEmployee(Employee employee);
 	
-	public Employee findAssigned();
+	public List<Employee> viewLeaderBoard();
+	
+	public Employee findAssigned(long assignedId);
 
 }
