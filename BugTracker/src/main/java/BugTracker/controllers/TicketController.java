@@ -1,5 +1,7 @@
 package BugTracker.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import BugTracker.dtos.TicketDto;
+import BugTracker.pojos.Ticket;
 import BugTracker.services.EmployeeService;
 import BugTracker.services.TicketService;
 
@@ -54,4 +57,25 @@ public class TicketController {
 		return rEntity;
 
 	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/ticket", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Ticket>> getAllTickets() {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTickets(), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/ticket", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Ticket>> getAllTickets() {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTickets(), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
 }
+
