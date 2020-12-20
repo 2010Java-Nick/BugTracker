@@ -14,10 +14,14 @@ public class TicketDto {
 	private long openerId;
 	private String name;
 	private LocalDateTime created;
+	private String createdStr;
 	private long statusId;
+	private String status;
 	private long priorityId;
+	private String priority;
 	private int difficultyLevel;
 	private String body;
+	private long assignedId;
 	
 	//TODO in front end, add difficulty level and body
 	public TicketDto() {
@@ -35,6 +39,77 @@ public class TicketDto {
 		this.priorityId = priorityId;
 		this.difficultyLevel = difficultyLevel;
 		this.setBody(body);
+	}
+
+	
+
+
+	public TicketDto(long openerId, String name, String createdStr, String status, String priority,
+			int difficultyLevel, long assignedId) {
+		super();
+		this.openerId = openerId;
+		this.name = name;
+		this.createdStr = createdStr;
+		this.status = status;
+		this.priority = priority;
+		this.difficultyLevel = difficultyLevel;
+		this.assignedId = assignedId;
+	}
+
+
+
+
+	public String getCreatedStr() {
+		return createdStr;
+	}
+
+
+
+
+	public void setCreatedStr(String createdStr) {
+		this.createdStr = createdStr;
+	}
+
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+
+	public String getPriority() {
+		return priority;
+	}
+
+
+
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+
+
+
+
+	public long getAssignedId() {
+		return assignedId;
+	}
+
+
+
+
+	public void setAssignedId(long assignedId) {
+		this.assignedId = assignedId;
 	}
 
 

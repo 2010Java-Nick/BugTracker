@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import BugTracker.dtos.TicketDto;
 import BugTracker.pojos.Employee;
 import BugTracker.pojos.Ticket;
 
@@ -119,5 +120,13 @@ public class TicketDaoImpl implements TicketDao {
 		List<Ticket> ticketList = sess.createQuery("from Ticket", Ticket.class).getResultList();
 		return ticketList;
 	}
+
+	@Override
+	public List<TicketDto> getAllTicketsDto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }
