@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-<<<<<<< HEAD
-
-const routes: Routes = [];
-=======
 import { TicketFormComponent } from './components/ticket/ticket-form/ticket-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OpenedComponent } from './components/opened/opened.component';
@@ -20,10 +16,9 @@ const routes: Routes = [
   { path: 'assigned', component: AssignedComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
->>>>>>> Tests
 
-    // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 export const appRoutingModule = RouterModule.forRoot(routes);
 @NgModule({
