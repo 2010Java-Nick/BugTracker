@@ -2,8 +2,20 @@
 
 <app-ticket-form></app-ticket-form>
 
-<button (click) = "getBoards()">Get Boards</button>
-<div *ngFor = "let board of boards | async">
+<button (click)="getBoards()">Get Boards</button>
+<div *ngFor="let board of boards | async">
     {{board | json}}
 </div>
 
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

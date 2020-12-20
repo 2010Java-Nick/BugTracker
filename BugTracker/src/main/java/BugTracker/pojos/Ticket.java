@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import BugTracker.dtos.TicketDto;
+
 /**
  * This is the information for a bug which will be resolved by a developer. The assigned developer will 
  * resolve the ticket and receive exp points for the ticket.
@@ -86,6 +88,13 @@ public class Ticket {
 		this.difficultyLevel = difficultyLevel;
 		this.comments = comments;
 		this.assignedDeveloper = assignedDeveloper;
+	}
+	
+	public TicketDto toDisplay() {
+		
+		return new TicketDto(opener.getEmployeeId(), name, created.toString(),
+				status.getStatusName(), priority.getPriorityName(), difficultyLevel,
+				assignedDeveloper.getEmployeeId());
 	}
 
 	public long getTicketId() {

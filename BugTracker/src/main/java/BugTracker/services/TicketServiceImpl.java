@@ -82,8 +82,7 @@ public class TicketServiceImpl implements TicketService {
 
 	@Override
 	public List<Ticket> getAllTickets() {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.getAllTickets();
 	}
 
 	@Override
@@ -168,5 +167,16 @@ public class TicketServiceImpl implements TicketService {
 	public Priority getPriorityObject(long priorityId) {
 		return priorityDao.readPriorityById(priorityId);
 	}
+
+	@Override
+	public List<TicketDto> getDisplayAllTickets(List<Ticket> lists) {
+		List<TicketDto> dtos = new ArrayList<>();
+		for(Ticket ticket: lists) {
+			dtos.add(ticket.toDisplay());
+		}
+		return dtos;
+	}
+	
+	
 
 }
