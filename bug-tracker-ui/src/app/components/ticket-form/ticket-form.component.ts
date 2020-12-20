@@ -4,7 +4,7 @@ import { Priority } from '../../model/priority';
 import { UserRole } from '../../model/user-role';
 
 @Component({
-  selector: 'app-ticket-form',
+  selector: 'app-ticket-forms',
   templateUrl: './ticket-form.component.html',
   styleUrls: ['./ticket-form.component.css']
 })
