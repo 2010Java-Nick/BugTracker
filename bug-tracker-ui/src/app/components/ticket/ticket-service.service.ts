@@ -9,11 +9,12 @@ import { CurrentUser } from '../../model/currentUserDto';
 })
 export class TicketServiceService {
 
-  
-  
+ 
   baseURL: string = "http://localhost:9090/";
 
-  
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+
+  currentUser: CurrentUser;
 
   constructor(private http: HttpClient) { 
   }
