@@ -38,6 +38,7 @@ public class PostController {
 	 * @return ResponseEntity<TicketDto>
 	 * @author Vincent
 	 */
+	@CrossOrigin
 	@RequestMapping(path = "/post", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {

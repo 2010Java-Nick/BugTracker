@@ -95,7 +95,7 @@ public class TicketController {
 	//need to see all posts associated with a ticket
 	
 	
-
+	@CrossOrigin
 	@RequestMapping(path = "/tickets", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<TicketDto>> getAllTickets(){
