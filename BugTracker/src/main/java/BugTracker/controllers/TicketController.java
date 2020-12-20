@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,8 +85,8 @@ public class TicketController {
 	@CrossOrigin
 	@RequestMapping(path = "/assigned/{ticketId}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Ticket> getTicket(@RequestBody long ticketId) {
-		ResponseEntity<Ticket> rEntity = new ResponseEntity<Ticket>(ticketService.getTicket(ticketId), 
+	public ResponseEntity<TicketDto> getTicket(@PathVariable(name = "ticketId") long ticketId) {
+		ResponseEntity<TicketDto> rEntity = new ResponseEntity<TicketDto>(ticketService.getTicket(ticketId).toDisplay(), 
 				HttpStatus.OK);
 	
 		return rEntity;
