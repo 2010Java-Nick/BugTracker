@@ -1,10 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { TicketServiceService } from './ticket/ticket-service.service';
-import { TicketDto } from './ticket';
+import { TicketDto } from '../app/model/ticketDto';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
 import { from, Observable } from 'rxjs';
-import { Component } from '@angular/core';
 import { faBug } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -14,9 +13,9 @@ import { faBug } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'bug-tracker-ui';
-  
+
 
   ticks!: TicketDto[];
   ticket!: TicketDto;
@@ -24,7 +23,7 @@ export class AppComponent implements OnInit{
   readonly ROOT_URL = 'http://localhost:9090/';
 
   boards!: Observable<any>
-  newBoards!: Observable<any> 
+  newBoards!: Observable<any>
   constructor(private http: HttpClient, private ticketService: TicketServiceService) {
 
   }
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit{
     this.boards = this.http.get(this.ROOT_URL + 'leaderboard');
   }
 
-  
+
 
   faBug = faBug;
 

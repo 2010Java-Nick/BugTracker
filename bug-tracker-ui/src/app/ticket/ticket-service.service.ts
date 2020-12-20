@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TicketDto } from '../ticket';
+import { TicketDto } from '../../app/model/ticketDto';
 import { Injectable } from '@angular/core';
-import { Observable } from'rxjs';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,7 @@ export class TicketServiceService {
 
   baseURL: string = "http://localhost:9090/ticket";
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
   getTicket(): Observable<TicketDto[]> {
@@ -19,6 +19,6 @@ export class TicketServiceService {
   addTicket(ticket: TicketDto): Observable<any> {
     const headers = { 'content-type': 'application/json' }
     //const body = JSON.stringify(ticket);
-    return this.http.post(this.baseURL, ticket, {'headers' : headers })
+    return this.http.post(this.baseURL, ticket, { 'headers': headers })
   }
 }

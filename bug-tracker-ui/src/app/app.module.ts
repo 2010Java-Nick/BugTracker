@@ -17,7 +17,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
-    TicketFormComponent
+    TicketFormComponent,
+    DashboardComponent,
+    OpenedComponent,
+    AssignedComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule
-    controller-testing
+
   ],
   providers: [],
   bootstrap: [AppComponent]
