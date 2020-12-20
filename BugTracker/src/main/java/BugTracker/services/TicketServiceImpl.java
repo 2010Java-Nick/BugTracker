@@ -165,4 +165,15 @@ public class TicketServiceImpl implements TicketService {
 		return priorityDao.readPriorityById(priorityId);
 	}
 
+	@Override
+	public List<TicketDto> getDisplayAllTickets(List<Ticket> lists) {
+		List<TicketDto> dtos = new ArrayList<>();
+		for(Ticket ticket: lists) {
+			dtos.add(ticket.toDisplay());
+		}
+		return dtos;
+	}
+	
+	
+
 }

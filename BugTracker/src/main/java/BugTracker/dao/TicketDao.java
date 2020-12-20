@@ -2,6 +2,7 @@ package BugTracker.dao;
 
 import java.util.List;
 
+import BugTracker.dtos.TicketDto;
 import BugTracker.pojos.Ticket;
 
 /**
@@ -26,5 +27,7 @@ public interface TicketDao {
 	public List<Ticket> readTicketsByOpener(long openerId);
 	
 	public List<Ticket> readTicketsByAssignedId(long assignedId);
+	
+	public List<TicketDto>getAllTicketsDto();
 	
 }

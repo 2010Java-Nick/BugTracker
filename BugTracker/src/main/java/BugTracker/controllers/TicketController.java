@@ -58,15 +58,8 @@ public class TicketController {
 
 	}
 	
-	@CrossOrigin
-	@RequestMapping(path = "/ticket", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<List<Ticket>> getAllTickets() {
-		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTickets(), 
-				HttpStatus.OK);
-	
-		return rEntity;
-	}
+
+
 	
 	@CrossOrigin
 	@RequestMapping(path = "/opened", method = RequestMethod.GET)
@@ -101,5 +94,14 @@ public class TicketController {
 	//need to see all posts associated with a ticket
 	
 	
+
+	@RequestMapping(path = "/tickets", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<TicketDto>> getAllTickets(){
+		ResponseEntity<List<TicketDto>> rEntity = new ResponseEntity<List<TicketDto>>(ticketService.getDisplayAllTickets(ticketService.getAllTickets()),
+				HttpStatus.OK);
+		return rEntity;
+	}
+
 }
 

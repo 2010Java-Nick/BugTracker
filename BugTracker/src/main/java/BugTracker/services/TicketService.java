@@ -24,6 +24,8 @@ public interface TicketService {
 	
 	public Priority getPriorityObject(long priorityId);
 	
+	public List<TicketDto> getDisplayAllTickets(List<Ticket> lists);
+	
 	
 	
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Status } from './status';
 
 import {Employee} from './employee';
@@ -15,5 +16,14 @@ export class TicketDto {
         public difficultyLevel: number,
         public body: String,
         public comments: Post[]
+=======
+export class TicketDto {
+    constructor(
+        public openerId: number,
+        public name: String,
+        public priorityId: number,
+        public difficultyLevel: number,
+        public body: String
+>>>>>>> Tests
     ){ }
 }
