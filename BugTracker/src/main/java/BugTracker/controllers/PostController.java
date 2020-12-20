@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,8 +52,8 @@ public class PostController {
 	@CrossOrigin
 	@RequestMapping(path = "/post/{ticketId}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Post>> getAllPostsByTicketId(@RequestBody long ticketId) {
-		ResponseEntity<List<Post>> rEntity = new ResponseEntity<List<Post>>(postService.getAllPostsInTicket(ticketId), 
+	public ResponseEntity<List<PostDto>> getAllPostsByTicketId(@PathVariable(name = "ticketId") long ticketId) {
+		ResponseEntity<List<PostDto>> rEntity = new ResponseEntity<List<PostDto>>(postService.toDisplay(postService.getAllPostsInTicket(ticketId)), 
 				HttpStatus.OK);
 	
 		return rEntity;
