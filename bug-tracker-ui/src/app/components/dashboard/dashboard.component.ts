@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TicketServiceService } from '.././ticket/ticket-service.service';
+import { TicketDisplay } from '../../model/ticketDtoDisplay';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  allTickets!: TicketDisplay[];
+
+  constructor(private ticketService: TicketServiceService) { }
 
   ngOnInit(): void {
+      this.ticketService.getAllTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
+      
   }
 
 }

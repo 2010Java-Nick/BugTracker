@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TicketDisplay } from '../../model/ticketDtoDisplay';
+import { TicketServiceService } from '../ticket/ticket-service.service'
 
 @Component({
   selector: 'app-assigned',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignedComponent implements OnInit {
 
-  constructor() { }
+  allTickets!: TicketDisplay[];
+
+  constructor(private ticketService: TicketServiceService) { }
 
   ngOnInit(): void {
+      this.ticketService.getAssignedTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
+      
   }
 
 }

@@ -1,5 +1,6 @@
 <nav>
     <mat-toolbar color="primary" class="navbar">
+        <div [hidden] = "isLoggedOut">
         <div>
             <span><a routerLink="/dashboard" routerLinkActive="active">
                     <fa-icon [icon]="faBug"></fa-icon> Bug Tracker
@@ -8,7 +9,8 @@
             <span><a routerLink="/assigned" routerLinkActive="active">Assigned</a></span>
             <span><a routerLink="/opened" routerLinkActive="active">Opened</a></span>
         </div>
-        <div>Logout</div>
+        <div (click) = "logout()">Logout</div>
+        </div>
     </mat-toolbar>
 </nav>
 <router-outlet></router-outlet>
@@ -21,15 +23,3 @@
     {{board | json}}
 </div>
 
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-
-<!-- main app container -->
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
