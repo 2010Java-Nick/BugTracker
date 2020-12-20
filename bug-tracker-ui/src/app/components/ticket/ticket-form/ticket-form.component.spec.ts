@@ -8,9 +8,9 @@ describe('TicketFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TicketFormComponent]
+      declarations: [ TicketFormComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   });
 
   beforeEach(() => {
