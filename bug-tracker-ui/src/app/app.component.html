@@ -1,22 +1,35 @@
 <nav>
-  <mat-toolbar color="primary" class="navbar">
-    <div>
-      <span
-        ><a routerLink="/dashboard" routerLinkActive="active"
-          ><fa-icon [icon]="faBug"></fa-icon> Bug Tracker</a
-        ></span
-      >
-      <span
-        ><a routerLink="/ticket-form" routerLinkActive="active"
-          >Create Ticket</a
-        ></span
-      >
-      <span
-        ><a routerLink="/assigned" routerLinkActive="active">Assigned</a></span
-      >
-      <span><a routerLink="/opened" routerLinkActive="active">Opened</a></span>
-    </div>
-    <div>Logout</div>
-  </mat-toolbar>
+    <mat-toolbar color="primary" class="navbar">
+        <div>
+            <span><a routerLink="/dashboard" routerLinkActive="active">
+                    <fa-icon [icon]="faBug"></fa-icon> Bug Tracker
+                </a></span>
+            <span><a routerLink="/ticket-form" routerLinkActive="active">Create Ticket</a></span>
+            <span><a routerLink="/assigned" routerLinkActive="active">Assigned</a></span>
+            <span><a routerLink="/opened" routerLinkActive="active">Opened</a></span>
+        </div>
+        <div>Logout</div>
+    </mat-toolbar>
 </nav>
 <router-outlet></router-outlet>
+
+
+
+
+<button (click)="getBoards()">Get Boards</button>
+<div *ngFor="let board of boards | async">
+    {{board | json}}
+</div>
+
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

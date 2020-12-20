@@ -1,5 +1,7 @@
 package BugTracker.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import BugTracker.dtos.TicketDto;
+import BugTracker.pojos.Ticket;
 import BugTracker.services.EmployeeService;
 import BugTracker.services.TicketService;
 
@@ -54,4 +57,51 @@ public class TicketController {
 		return rEntity;
 
 	}
+	
+
+
+	
+	@CrossOrigin
+	@RequestMapping(path = "/opened", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Ticket>> getAllTicketsByOpener(@RequestBody long employeeId) {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByOpener(employeeId), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/assigned", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<Ticket>> getAllTicketsByAssigned(@RequestBody long employeeId) {
+		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByAssigned(employeeId), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path = "/assigned/{ticketId}", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<Ticket> getTicket(@RequestBody long ticketId) {
+		ResponseEntity<Ticket> rEntity = new ResponseEntity<Ticket>(ticketService.getTicket(ticketId), 
+				HttpStatus.OK);
+	
+		return rEntity;
+	}
+	
+	//need to see all posts associated with a ticket
+	
+	
+
+	@RequestMapping(path = "/tickets", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<List<TicketDto>> getAllTickets(){
+		ResponseEntity<List<TicketDto>> rEntity = new ResponseEntity<List<TicketDto>>(ticketService.getDisplayAllTickets(ticketService.getAllTickets()),
+				HttpStatus.OK);
+		return rEntity;
+	}
+
 }
+
