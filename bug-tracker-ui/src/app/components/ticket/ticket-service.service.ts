@@ -12,9 +12,8 @@ export class TicketServiceService {
  
   baseURL: string = "http://localhost:9090/";
 
-  currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!) as CurrentUser;
 
-  currentUser: CurrentUser;
 
   constructor(private http: HttpClient) { 
   }
@@ -28,7 +27,7 @@ export class TicketServiceService {
   }
 
   getAssignedTickets(): Observable<TicketDisplay[]> {
-    return this.http.get<TicketDisplay[]>(this.baseURL + "assigned/")
+    return this.http.get<TicketDisplay[]>(this.baseURL + "assigned/"+ this.currentUser.id)
   }
 
   addTicket(ticket: TicketDto): Observable<any> {
