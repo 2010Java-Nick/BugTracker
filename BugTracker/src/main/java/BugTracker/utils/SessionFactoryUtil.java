@@ -48,9 +48,9 @@ public class SessionFactoryUtil {
 		if (sessionFactory == null) {
 
 			Map<String, String> settings = new HashMap<>();
-			settings.put("hibernate.connection.url", System.getenv("DATABASE_URL"));
-			settings.put("hibernate.connection.username", System.getenv("DATABASE_USERNAME"));
-			settings.put("hibernate.connection.password", System.getenv("DATABASE_PASSWORD"));
+			settings.put("hibernate.connection.url", "jdbc:postgresql://trms-postgres-aholliday.postgres.database.azure.com:5432/postgres");
+			settings.put("hibernate.connection.username", "aholliday@trms-postgres-aholliday");
+			settings.put("hibernate.connection.password", "password123!");
 			settings.put("hibernate.connection.driver_class", "org.postgresql.Driver");
 			settings.put("hibernate.connection.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			settings.put("hibernate.show_sql", "true");
