@@ -6,7 +6,7 @@ import { Employee } from '../model/employee';
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
-    baseURL: string = "http://20.51.254.239:9090/";
+    baseURL: string = "http://localhost:9090/";
 
     constructor(private http: HttpClient) { }
 

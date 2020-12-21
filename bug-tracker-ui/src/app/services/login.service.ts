@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 
 import { Employee } from '../model/employee';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -12,7 +13,7 @@ export class AuthenticationService {
     public currentUser: Observable<Employee>;
 
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
         this.currentUserSubject = new BehaviorSubject<Employee>(JSON.parse(localStorage.getItem('currentUser')!));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -22,7 +23,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`http://20.51.254.239:9090/auth`, { email, password })
+        return this.http.post<any>(`http://localhost:9090/auth`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -36,4 +37,11 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null!);
     }
+
+    reloadComponent(){
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/same-route']);
+      }
+    
 }

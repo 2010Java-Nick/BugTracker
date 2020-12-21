@@ -20,7 +20,7 @@
          <select class="form-control"  id="statusId"
                  required
                  [(ngModel)]="model.statusId" name="status">
-           <option *ngFor="let status of statuses;" [value]="status.statusId">{{status.statusName}}</option>
+           <option *ngFor="let status of statuses;" [value]="status.statusId" name = "statusId">{{status.statusName}}</option>
          </select>
        </div>
                 

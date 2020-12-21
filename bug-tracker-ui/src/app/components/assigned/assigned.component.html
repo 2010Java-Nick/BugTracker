@@ -1,5 +1,5 @@
 
-<div *ngFor = "let ticket of allTickets; let i = index">
+<div *ngFor = "let ticket of allTickets; let i = index;">
    {{ticket.name}} - {{ticket.createdStr}}  <br>
    Status: {{ticket.status}} -  Priority: {{ticket.priorityId}} <br>
    Opened by: {{ticket.openerName}} <br><br><br>
@@ -11,8 +11,60 @@
     <app-post-form [ticketIds] = "ticket.ticketId"></app-post-form>
    </div>
    <div [hidden] = "!hideedit[i]">
-       <app-edit></app-edit>
-   </div>
+      
+          
+         
+          <form #ticketForm = "ngForm">
+          <div [hidden]="!hideedit[i]">
+         
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input type="text"  class="form-control" id="name"
+                     [(ngModel)]="ticket.name" name="name"
+                     #name="ngModel">
+                     <div [hidden]="name.valid || name.pristine"
+                     class="alert alert-danger">
+                     Title is required.
+                     </div>
+            </div>
+            <div class="form-group">
+              <label for="statusId">Status</label>
+              <select class="form-control"  id="statusId"
+                      required
+                      [(ngModel)]="ticket.statusId" name="status">
+                <option *ngFor="let status of statuses;" [value]="status.statusId" name = "statusId">{{status.statusName}}</option>
+              </select>
+            </div>
+                     
+            <div class="form-group">
+              <label for="priorityId">Priority</label>
+              <select class="form-control"  id="priorityId"
+                      required
+                      [(ngModel)]="ticket.priorityId" name="priority">
+                <option *ngFor="let valu of values;" [value]="valu">{{valu}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="difficultyLevel">Difficulty Level</label>
+              <input type="number" class="form-control" id="difficultyLevel"
+                     required
+                     [(ngModel)]="ticket.difficultyLevel" name="difficultyLevel"
+                     #name="ngModel">
+                     <div [hidden]="name.valid || name.pristine"
+                     class="alert alert-danger">
+                     Difficulty Level is required.
+                     </div>
+      
+            </div>
+         </div>
+         <div [hidden]="!hideedit[i]">
+             <button type = "submit" (click)='updateTicket(ticket)' [disabled]="!ticketForm.form.valid">Update ticket</button>
+         </div>
+          
+            </form>
+       
+      
+   
 
 </div>
 

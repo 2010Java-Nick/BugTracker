@@ -63,5 +63,12 @@ export class LoginComponent implements OnInit {
                     this.error = "Credentials do not Match!";
                     this.loading = false;
                 });
+                this.reloadComponent();
     }
+
+    reloadComponent(){
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['/same-route']);
+      }
 }
