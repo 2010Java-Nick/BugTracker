@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurrentUser } from 'src/app/model/currentUserDto';
 import { TicketDto } from '../../../model/ticket';
 import { TicketServiceService } from '../ticket-service.service';
 
@@ -8,18 +9,25 @@ import { TicketServiceService } from '../ticket-service.service';
   templateUrl: './ticket-form.component.html',
   styleUrls: ['./ticket-form.component.css']
 })
-export class TicketFormComponent {
+export class TicketFormComponent implements OnInit {
 
   priority = ['Low', 'Medium', 'High'];
   values = ['1', '2', '3'];
 
-  model = new TicketDto(1, " ", 1, 1, " ");
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!) as CurrentUser;
+
+  empId = this.currentUser.id;
+
+  model = new TicketDto(this.empId, "", 1, 1, "");
 
   submitted = false;
 
 
 
   constructor(private http: HttpClient, private ticketService: TicketServiceService) { }
+  ngOnInit(): void {
+    
+  }
 
   onSubmit() {
     this.ticketService.addTicket(this.model).subscribe(resp => console.log('Passed'));

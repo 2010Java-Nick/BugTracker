@@ -10,6 +10,7 @@ import { TicketServiceService } from '../ticket/ticket-service.service';
 export class OpenedComponent implements OnInit {
 
   allTickets!: TicketDisplay[];
+  hideme = [] as any;
 
   constructor(private ticketService: TicketServiceService) { }
 

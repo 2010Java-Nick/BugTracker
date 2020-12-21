@@ -13,16 +13,15 @@ export class AssignedComponent implements OnInit {
 
 
   allTickets!: TicketDisplay[];
-  hideme = [];
+  hideme = [] as any;
   
   
   
   constructor(private ticketService: TicketServiceService,
               private postService: PostService) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.ticketService.getAssignedTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
-      
   }
 
   
