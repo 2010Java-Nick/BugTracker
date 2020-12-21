@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TicketDisplay } from '../../model/ticketDtoDisplay';
-import { TicketServiceService } from '../ticket/ticket-service.service'
+import { TicketServiceService } from '../ticket/ticket-service.service';
 import { PostService } from '../post/post.service';
 import { ViewPostsComponent } from '../post/view-posts/view-posts.component'
 
