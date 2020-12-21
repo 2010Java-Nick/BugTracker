@@ -35,7 +35,7 @@ public class TicketDto {
 
 
 	public TicketDto(long ticketId, String openerName, String name, String createdStr, String status, long priorityId,
-			int difficultyLevel, String assignedName) {
+			int difficultyLevel, String assignedName, String priority) {
 		super();
 		this.ticketId = ticketId;
 		this.openerName = openerName;
@@ -45,6 +45,7 @@ public class TicketDto {
 		this.priorityId = priorityId;
 		this.difficultyLevel = difficultyLevel;
 		this.assignedName = assignedName;
+		this.priority = priority;
 	}
 
 	public TicketDto(long openerId, String name, long priorityId,

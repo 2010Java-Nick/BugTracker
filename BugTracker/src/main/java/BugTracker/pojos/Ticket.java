@@ -94,7 +94,7 @@ public class Ticket {
 		
 		return new TicketDto(ticketId, opener.getFirstName(), name, created.toString(),
 				status.getStatusName(), priority.getPriorityId(), difficultyLevel,
-				assignedDeveloper.getFirstName());
+				assignedDeveloper.getFirstName(), priority.getPriorityName());
 	}
 
 	public long getTicketId() {

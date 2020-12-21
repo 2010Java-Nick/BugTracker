@@ -21,7 +21,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { ViewPostsComponent } from './components/post/view-posts/view-posts.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
-import { PostFormComponent } from './components/post/post-form/post-form.component';
+import { PostFormComponent } from './components/post/post-form/post-form.component'; 
 
 
 @NgModule({
@@ -33,9 +33,9 @@ import { PostFormComponent } from './components/post/post-form/post-form.compone
     AssignedComponent,
     LoginComponent,
     ViewPostsComponent,
-     TempBranch,
     LeaderboardComponent,
-    PostFormComponent
+    PostFormComponent,
+
   ],
   imports: [
     BrowserModule,

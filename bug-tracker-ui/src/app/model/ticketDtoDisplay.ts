@@ -3,11 +3,12 @@ export class TicketDisplay {
         public ticketId: number,
         public openerName: String,
         public name: String,
-        public priority: number,
+        public priorityId: number,
         public statusId: number,
         public status: String,
         public difficultyLevel: number,
         public assignedName: String,
-        public createdStr: String
+        public createdStr: String,
+        public priority: String
     ){ }
 }
