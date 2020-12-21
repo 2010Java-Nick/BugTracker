@@ -18,10 +18,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { HomeComponent } from './homepage/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewPostsComponent } from './components/post/view-posts/view-posts.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { PostFormComponent } from './components/post/post-form/post-form.component';
+
 
 @NgModule({
   declarations: [
@@ -30,9 +31,10 @@ import { PostFormComponent } from './components/post/post-form/post-form.compone
     DashboardComponent,
     OpenedComponent,
     AssignedComponent,
-    HomeComponent,
     LoginComponent,
     ViewPostsComponent,
+     TempBranch,
+    LeaderboardComponent,
     PostFormComponent
   ],
   imports: [

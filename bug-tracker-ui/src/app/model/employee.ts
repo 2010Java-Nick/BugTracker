@@ -6,7 +6,8 @@ export class Employee {
     public password: string,
     public firstName: string,
     public lastName: string,
-    public token?: string
+    public expPoints: number,
+    public token?: string,
     ) { }
     
  

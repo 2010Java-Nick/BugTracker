@@ -104,5 +104,13 @@ public class TicketController {
 		return rEntity;
 	}
 
+	@CrossOrigin
+	@RequestMapping(path = "/ticket", method = RequestMethod.PUT)
+	@ResponseBody
+	public ResponseEntity<TicketDto> updateTicket(@RequestBody TicketDto ticketDto){
+		ResponseEntity<TicketDto> rEntity = new ResponseEntity<TicketDto>(ticketService.getDisplayTicket(ticketService.updateTicket(ticketService.dtoToTicket(ticketDto))),
+				HttpStatus.OK);
+		return rEntity;
+	}
 }
 

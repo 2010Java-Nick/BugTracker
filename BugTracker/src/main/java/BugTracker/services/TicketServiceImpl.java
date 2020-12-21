@@ -142,14 +142,12 @@ public class TicketServiceImpl implements TicketService {
 	
 	@Override
 	public Ticket updateTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-		return null;
+		return ticketDao.updateTicket(ticket);
 	}
 
 	@Override
 	public void deleteTicket(Ticket ticket) {
-		// TODO Auto-generated method stub
-
+		ticketDao.deleteTicket(ticket);
 	}
 
 	/**
@@ -173,6 +171,26 @@ public class TicketServiceImpl implements TicketService {
 		}
 		return dtos;
 	}
+	
+	@Override
+	public TicketDto getDisplayTicket(Ticket ticket) {
+		return ticket.toDisplay();
+	}
+
+	@Override
+	public Ticket dtoToTicket(TicketDto ticketDto) {
+		Ticket ticket = ticketDao.readTicket(ticketDto.getTicketId());
+		ticket.setDifficultyLevel(ticketDto.getDifficultyLevel());
+		ticket.setName(ticketDto.getName());
+		ticket.setStatus(statusDao.readStatusById(ticketDto.getStatusId()));
+		ticket.setDifficultyLevel(ticketDto.getDifficultyLevel());
+		ticket.setPriority(priorityDao.readPriorityById(ticketDto.getPriorityId()));
+		
+		return ticket;
+		
+	}
+	
+	
 	
 	
 

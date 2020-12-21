@@ -37,4 +37,8 @@ export class TicketServiceService {
   addTicket(ticket: TicketDto): Observable<any> {
     return this.http.post(this.baseURL + "ticket", ticket)
   }
+
+  updateTicket(ticketDisplay: TicketDisplay): Observable<any> {
+    return this.http.put(this.baseURL + "ticket", ticketDisplay)
+  }
 }
