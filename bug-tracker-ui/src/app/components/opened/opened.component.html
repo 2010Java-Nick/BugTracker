@@ -1,3 +1,4 @@
+
 <div *ngFor="let model of allTickets; let i = index">
    <h3>{{model.openerName}} {{model.name}} {{model.status}} {{model.priority}} {{model.difficultyLevel}}</h3>
     
@@ -51,3 +52,18 @@
     </form>
  <button (click)='updateTicket(model)' [disabled]="!ticketForm.form.valid">Update ticket</button>
 </div>
+
+<div *ngFor = "let ticket of allTickets; let i = index">
+    {{ticket.name}} - {{ticket.createdStr}}  <br>
+    Status: {{ticket.status}} -  Priority: {{ticket.priority}} <br>
+    Opened by: {{ticket.openerName}} <br><br><br>
+    <button (click) = "hideme[i] = !hideme[i]">Click Me</button>
+ 
+    <div [hidden] = "!hideme[i]">
+     <app-view-posts [idNumber] = "ticket.ticketId"></app-view-posts>
+     <app-post-form [ticketIds] = "ticket.ticketId"></app-post-form>
+    </div>
+ 
+ </div>
+ 
+ 

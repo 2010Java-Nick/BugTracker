@@ -11,22 +11,19 @@ import { ViewPostsComponent } from '../post/view-posts/view-posts.component'
 })
 export class AssignedComponent implements OnInit {
 
-  @Input() notClicked: boolean = true;
 
   allTickets!: TicketDisplay[];
-  numValue!: number
-
+  hideme = [] as any;
+  
+  
+  
   constructor(private ticketService: TicketServiceService,
               private postService: PostService) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
       this.ticketService.getAssignedTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
-      
   }
 
-  showPosts(){
-    this.notClicked = !this.notClicked;
-    
-  }
+  
 
 }

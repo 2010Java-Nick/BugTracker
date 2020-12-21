@@ -16,6 +16,7 @@ export class OpenedComponent implements OnInit {
   values = ['1', '2', '3'];
 
   allTickets!: TicketDisplay[];
+  hideme = [] as any;
 
   ticketDisplay!: TicketDisplay;
 
