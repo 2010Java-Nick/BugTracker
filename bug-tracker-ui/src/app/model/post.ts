@@ -1,7 +1,8 @@
-export interface Post {
-    postId: number;
-    employeeId: number;
-    body: string;
-    created: Date;
-
+export class Post {
+    constructor(
+    public ticketId: number,
+    public employeeId: number,
+    public employeeName: String,
+    public body: string
+     ) { }
 }

@@ -15,6 +15,8 @@ public class PostDto {
 	private String body;
 	private long ticketId;
 	private long employeeId;
+	private String employeeName;
+	private String timePosted;
 	
 	
 	public PostDto() {
@@ -31,6 +33,37 @@ public class PostDto {
 	}
 
 
+
+	public PostDto(String body, String employeeName, String timePosted) {
+		super();
+		this.body = body;
+		this.employeeName = employeeName;
+		this.timePosted = timePosted;
+	}
+
+
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+
+
+	public String getTimePosted() {
+		return timePosted;
+	}
+
+
+
+	public void setTimePosted(String timePosted) {
+		this.timePosted = timePosted;
+	}
 
 
 

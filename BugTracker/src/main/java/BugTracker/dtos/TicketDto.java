@@ -11,7 +11,9 @@ public class TicketDto {
 	 * Data transfer object to read in Tickets from front-end.
 	 * @author Acacia and Hannah
 	 */
+	private long ticketId;
 	private long openerId;
+	private String openerName;
 	private String name;
 	private LocalDateTime created;
 	private String createdStr;
@@ -22,6 +24,7 @@ public class TicketDto {
 	private int difficultyLevel;
 	private String body;
 	private long assignedId;
+	private String assignedName;
 	
 	//TODO in front end, add difficulty level and body
 	public TicketDto() {
@@ -44,16 +47,59 @@ public class TicketDto {
 	
 
 
-	public TicketDto(long openerId, String name, String createdStr, String status, String priority,
-			int difficultyLevel, long assignedId) {
+	public TicketDto(long ticketId, String openerName, String name, String createdStr, String status, String priority,
+			int difficultyLevel, String assignedName) {
 		super();
-		this.openerId = openerId;
+		this.ticketId = ticketId;
+		this.openerName = openerName;
 		this.name = name;
 		this.createdStr = createdStr;
 		this.status = status;
 		this.priority = priority;
 		this.difficultyLevel = difficultyLevel;
-		this.assignedId = assignedId;
+		this.assignedName = assignedName;
+	}
+
+
+	
+
+	public long getTicketId() {
+		return ticketId;
+	}
+
+
+
+
+	public void setTicketId(long ticketId) {
+		this.ticketId = ticketId;
+	}
+
+
+
+
+	public String getOpenerName() {
+		return openerName;
+	}
+
+
+
+
+	public void setOpenerName(String openerName) {
+		this.openerName = openerName;
+	}
+
+
+
+
+	public String getAssignedName() {
+		return assignedName;
+	}
+
+
+
+
+	public void setAssignedName(String assignedName) {
+		this.assignedName = assignedName;
 	}
 
 

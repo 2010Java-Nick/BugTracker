@@ -1,22 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { TicketDto } from '../../model/ticket';
+import { TicketDisplay } from '../../model/ticketDtoDisplay';
 import { Injectable } from '@angular/core';
 import { Observable } from'rxjs';
+import { CurrentUser } from '../../model/currentUserDto';
 @Injectable({
   providedIn: 'root'
 })
 export class TicketServiceService {
 
-  baseURL: string = "http://localhost:9090/ticket";
+ 
+  baseURL: string = "http://localhost:9090/";
+
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!) as CurrentUser;
+
 
   constructor(private http: HttpClient) { 
   }
 
-  getTicket(): Observable<TicketDto[]> {
-    return this.http.get<TicketDto[]>(this.baseURL)
+  getTicket(): Observable<TicketDisplay[]> {
+    return this.http.get<TicketDisplay[]>(this.baseURL+"ticket")
+  }
+
+  getAllTickets(): Observable<TicketDisplay[]> {
+    return this.http.get<TicketDisplay[]>(this.baseURL+"tickets")
+  }
+
+  getAssignedTickets(): Observable<TicketDisplay[]> {
+    return this.http.get<TicketDisplay[]>(this.baseURL + "assigned/"+ this.currentUser.id)
+  }
+
+  getOpenerTickets(): Observable<TicketDisplay[]> {
+    return this.http.get<TicketDisplay[]>(this.baseURL + "opened/"+ this.currentUser.id)
   }
 
   addTicket(ticket: TicketDto): Observable<any> {
-    return this.http.post(this.baseURL, ticket)
+    return this.http.post(this.baseURL + "ticket", ticket)
   }
 }

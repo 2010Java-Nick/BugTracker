@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TicketDisplay } from 'src/app/model/ticketDtoDisplay';
+import { TicketServiceService } from '../ticket/ticket-service.service';
 
 @Component({
   selector: 'app-opened',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpenedComponent implements OnInit {
 
-  constructor() { }
+  allTickets!: TicketDisplay[];
+  hideme = [] as any;
+
+  constructor(private ticketService: TicketServiceService) { }
 
   ngOnInit(): void {
+      this.ticketService.getOpenerTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
+      
   }
 
 }

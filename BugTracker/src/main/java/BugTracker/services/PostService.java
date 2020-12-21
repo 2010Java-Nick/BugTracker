@@ -40,6 +40,8 @@ public interface PostService {
 	
 	public Post toPost(PostDto postDto);
 	
+	public List<PostDto> toDisplay(List<Post> lists);
+	
 	
 
 }

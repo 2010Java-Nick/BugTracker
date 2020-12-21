@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -62,30 +63,30 @@ public class TicketController {
 
 	
 	@CrossOrigin
-	@RequestMapping(path = "/opened", method = RequestMethod.GET)
+	@RequestMapping(path = "/opened/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Ticket>> getAllTicketsByOpener(@RequestBody long employeeId) {
-		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByOpener(employeeId), 
+	public ResponseEntity<List<TicketDto>> getAllTicketsByOpener(@PathVariable(name = "employeeId")@RequestBody long employeeId) {
+		ResponseEntity<List<TicketDto>> rEntity = new ResponseEntity<List<TicketDto>>(ticketService.getDisplayAllTickets(ticketService.getAllTicketsByOpener(employeeId)), 
 				HttpStatus.OK);
 	
 		return rEntity;
 	}
 	
 	@CrossOrigin
-	@RequestMapping(path = "/assigned", method = RequestMethod.GET)
+	@RequestMapping(path = "/assigned/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<List<Ticket>> getAllTicketsByAssigned(@RequestBody long employeeId) {
-		ResponseEntity<List<Ticket>> rEntity = new ResponseEntity<List<Ticket>>(ticketService.getAllTicketsByAssigned(employeeId), 
+	public ResponseEntity<List<TicketDto>> getAllTicketsByAssigned(@PathVariable(name = "employeeId") long employeeId) {
+		ResponseEntity<List<TicketDto>> rEntity = new ResponseEntity<List<TicketDto>>(ticketService.getDisplayAllTickets(ticketService.getAllTicketsByAssigned(employeeId)), 
 				HttpStatus.OK);
 	
 		return rEntity;
 	}
 	
 	@CrossOrigin
-	@RequestMapping(path = "/assigned/{ticketId}", method = RequestMethod.GET)
+	@RequestMapping(path = "/{ticketId}", method = RequestMethod.GET)
 	@ResponseBody
-	public ResponseEntity<Ticket> getTicket(@RequestBody long ticketId) {
-		ResponseEntity<Ticket> rEntity = new ResponseEntity<Ticket>(ticketService.getTicket(ticketId), 
+	public ResponseEntity<TicketDto> getTicket(@PathVariable(name = "ticketId") long ticketId) {
+		ResponseEntity<TicketDto> rEntity = new ResponseEntity<TicketDto>(ticketService.getTicket(ticketId).toDisplay(), 
 				HttpStatus.OK);
 	
 		return rEntity;
@@ -94,7 +95,7 @@ public class TicketController {
 	//need to see all posts associated with a ticket
 	
 	
-
+	@CrossOrigin
 	@RequestMapping(path = "/tickets", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<TicketDto>> getAllTickets(){

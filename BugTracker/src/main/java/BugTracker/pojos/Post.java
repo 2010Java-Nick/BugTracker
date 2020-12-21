@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import BugTracker.dtos.PostDto;
+
 /**
  * This is communication between employees regarding status updates for tickets.
  * @author Ksenia
@@ -39,7 +41,9 @@ public class Post {
 		super();
 	}
 
-	
+	public PostDto toDisplay() {
+		return new PostDto(body, author.getFirstName(), created.toString());
+	}
 	
 	public Post(long postId, Employee author, String body, LocalDateTime created, Ticket ticket) {
 		super();

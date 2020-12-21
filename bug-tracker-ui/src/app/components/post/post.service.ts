@@ -1,7 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { PostDto } from '../../model/post';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Post } from '../../model/post';
 import { Injectable } from '@angular/core';
-import { Observable } from'rxjs';
+import { Observable, of } from'rxjs';
+import { tap } from 'rxjs/operators';
+
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +16,12 @@ export class PostService {
   
   constructor(private http: HttpClient) { }
 
-  getPost(): Observable<PostDto[]>{
-    return this.http.get<PostDto[]>(this.baseURL);
+  getAllPost(id: number): Observable<Post[]>{
+    const url = `${this.baseURL}/${id}`;
+    return this.http.get<Post[]>(url);
   }
 
-  addPost(post: PostDto): Observable<any> {
+  addPost(post: Post): Observable<any> {
     return this.http.post(this.baseURL, post);
   }
 }

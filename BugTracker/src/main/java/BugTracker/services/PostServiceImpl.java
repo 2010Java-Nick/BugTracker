@@ -1,6 +1,7 @@
 package BugTracker.services;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -84,4 +85,16 @@ public class PostServiceImpl implements PostService {
 	public Post toPost(PostDto postDto ) {
 		return new Post(employeeDao.readEmployeeById(postDto.getEmployeeId()), postDto.getBody(), LocalDateTime.now(), ticketDao.readTicket(postDto.getTicketId()));
 	}
+
+
+	@Override
+	public List<PostDto> toDisplay(List<Post> lists) {
+		List<PostDto> dtos = new ArrayList<PostDto>();
+		for(Post post: lists) {
+			dtos.add(post.toDisplay());
+		}
+		return dtos;
+	}
+	
+	
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -13,6 +13,9 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl!: string;
     error = '';
+    
+
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/']);
         }
     }
-
+    
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
@@ -53,9 +56,11 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+
+                 
                 },
                 error => {
-                    this.error = error;
+                    this.error = "Credentials do not Match!";
                     this.loading = false;
                 });
     }
