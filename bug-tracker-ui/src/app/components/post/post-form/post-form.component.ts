@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PostDto } from '../../../model/post';
+import { Post } from '../../../model/post';
 import { PostService } from '../post.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { PostService } from '../post.service';
 })
 export class PostFormComponent {
 
-  model = new PostDto(1, 1, " ");
+  model = new Post(1, " ", "");
 
   submitted = false;
 
@@ -22,7 +22,7 @@ export class PostFormComponent {
   }
 
   newPost() {
-    this.model = new PostDto(1, 1, " ");
+    this.model = new Post(1, " ", "");
   }
 
 

@@ -30,6 +30,10 @@ export class TicketServiceService {
     return this.http.get<TicketDisplay[]>(this.baseURL + "assigned/"+ this.currentUser.id)
   }
 
+  getOpenerTickets(): Observable<TicketDisplay[]> {
+    return this.http.get<TicketDisplay[]>(this.baseURL + "opened/"+ this.currentUser.id)
+  }
+
   addTicket(ticket: TicketDto): Observable<any> {
     return this.http.post(this.baseURL + "ticket", ticket)
   }

@@ -20,6 +20,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { HomeComponent } from './homepage/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { ViewPostsComponent } from './components/post/view-posts/view-posts.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginComponent } from './components/login/login.component';
     OpenedComponent,
     AssignedComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ViewPostsComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,6 @@ export class TicketFormComponent {
   constructor(private http: HttpClient, private ticketService: TicketServiceService) { }
 
   onSubmit() {
-    this.submitted = true;
     this.ticketService.addTicket(this.model).subscribe(resp => console.log('Passed'));
   }
 
@@ -30,5 +29,8 @@ export class TicketFormComponent {
     this.model = new TicketDto(0, '', 0, 0, '');
   }
 
+  onConfirm(){
+    this.submitted = true;
+  }
 
 }

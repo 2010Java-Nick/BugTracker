@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TicketDisplay } from '../../model/ticketDtoDisplay';
 import { TicketServiceService } from '../ticket/ticket-service.service'
+import { PostService } from '../post/post.service';
+import { ViewPostsComponent } from '../post/view-posts/view-posts.component'
 
 @Component({
   selector: 'app-assigned',
@@ -9,13 +11,22 @@ import { TicketServiceService } from '../ticket/ticket-service.service'
 })
 export class AssignedComponent implements OnInit {
 
-  allTickets!: TicketDisplay[];
+  @Input() notClicked: boolean = true;
 
-  constructor(private ticketService: TicketServiceService) { }
+  allTickets!: TicketDisplay[];
+  numValue!: number
+
+  constructor(private ticketService: TicketServiceService,
+              private postService: PostService) { }
 
   ngOnInit(): void {
       this.ticketService.getAssignedTickets().subscribe(data => {this.allTickets = data, console.log(this.allTickets)});
       
+  }
+
+  showPosts(){
+    this.notClicked = !this.notClicked;
+    
   }
 
 }

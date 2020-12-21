@@ -11,6 +11,7 @@ public class TicketDto {
 	 * Data transfer object to read in Tickets from front-end.
 	 * @author Acacia and Hannah
 	 */
+	private long ticketId;
 	private long openerId;
 	private String openerName;
 	private String name;
@@ -46,9 +47,10 @@ public class TicketDto {
 	
 
 
-	public TicketDto(String openerName, String name, String createdStr, String status, String priority,
+	public TicketDto(long ticketId, String openerName, String name, String createdStr, String status, String priority,
 			int difficultyLevel, String assignedName) {
 		super();
+		this.ticketId = ticketId;
 		this.openerName = openerName;
 		this.name = name;
 		this.createdStr = createdStr;
@@ -56,6 +58,20 @@ public class TicketDto {
 		this.priority = priority;
 		this.difficultyLevel = difficultyLevel;
 		this.assignedName = assignedName;
+	}
+
+
+	
+
+	public long getTicketId() {
+		return ticketId;
+	}
+
+
+
+
+	public void setTicketId(long ticketId) {
+		this.ticketId = ticketId;
 	}
 
 

@@ -92,7 +92,7 @@ public class Ticket {
 	
 	public TicketDto toDisplay() {
 		
-		return new TicketDto(opener.getFirstName(), name, created.toString(),
+		return new TicketDto(ticketId, opener.getFirstName(), name, created.toString(),
 				status.getStatusName(), priority.getPriorityName(), difficultyLevel,
 				assignedDeveloper.getFirstName());
 	}
