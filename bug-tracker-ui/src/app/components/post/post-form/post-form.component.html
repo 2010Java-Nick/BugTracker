@@ -1,16 +1,23 @@
-<div [hidden]="submitted">
+<div>
     <form (ngSubmit)="onSubmit()" #postForm = "ngForm">
-    <div class="form-group">
-      <label for="body">Body</label>
-      <textarea  class="form-control" id="body"
+      <div [hidden]="submitted">
+        <div class="form-group">
+          <label for="body">Body</label>
+          <textarea  class="form-control" id="body"
              [(ngModel)]="model.body" name="body">
           </textarea>
-    </div>
-    <button type="button" class="btn btn-default" (click)="newPost()">New Post</button>
-    <button type="button" class="btn btn-default" (click)="newPost(); postForm.reset()">New Post</button>
-    <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid">Submit</button>
-  </form>
-  </div>
+        </div>
+        <button type="button" class="btn btn-default" (click)="onConfirm()">View and Confirm</button>
+        <button type="button" class="btn btn-default" (click)="newPost(); postForm.reset()">New Ticket</button>
+      </div>
+      <div [hidden]="!submitted">
+        <button type="submit" class="btn btn-success" [disabled]="!postForm.form.valid" >Submit</button>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>
+        </form>
+      </div>
+
+
   <div [hidden]="!submitted">
       <h2>You submitted the following:</h2>
       <div class="row">
@@ -25,5 +32,4 @@
         <div class="col-xs-3">Body</div>
         <div class="col-xs-9">{{ model.body }}</div>
       </div>
-    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
   </div>

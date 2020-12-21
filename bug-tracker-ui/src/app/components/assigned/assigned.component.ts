@@ -15,6 +15,8 @@ export class AssignedComponent implements OnInit {
   allTickets!: TicketDisplay[];
   hideme = [];
   
+  
+  
   constructor(private ticketService: TicketServiceService,
               private postService: PostService) { }
 
