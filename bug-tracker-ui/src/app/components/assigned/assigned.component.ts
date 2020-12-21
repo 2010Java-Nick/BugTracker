@@ -14,6 +14,7 @@ export class AssignedComponent implements OnInit {
 
   allTickets!: TicketDisplay[];
   hideme = [] as any;
+  hideedit = [] as any;
   
   
   

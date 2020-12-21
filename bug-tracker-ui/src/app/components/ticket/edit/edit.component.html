@@ -1,0 +1,54 @@
+<div *ngFor="let model of allTickets; let i = index">
+    <h5>{{model.openerName}} {{model.name}} {{model.status}} {{model.priority}} {{model.difficultyLevel}}</h5>
+     
+    <button  (click)="hideme[i] = !hideme[i]">Edit</button>
+     <form #ticketForm = "ngForm">
+     <div [hidden]="!hideme[i]">
+    
+       <div class="form-group">
+         <label for="name">Title</label>
+         <input type="text"  class="form-control" id="name"
+                [(ngModel)]="model.name" name="name"
+                #name="ngModel">
+                <div [hidden]="name.valid || name.pristine"
+                class="alert alert-danger">
+                Title is required.
+                </div>
+       </div>
+       <div class="form-group">
+         <label for="statusId">Status</label>
+         <select class="form-control"  id="statusId"
+                 required
+                 [(ngModel)]="model.statusId" name="status">
+           <option *ngFor="let status of statuses;" [value]="status.statusId">{{status.statusName}}</option>
+         </select>
+       </div>
+                
+       <div class="form-group">
+         <label for="priorityId">Priority</label>
+         <select class="form-control"  id="priorityId"
+                 required
+                 [(ngModel)]="model.priorityId" name="priority">
+           <option *ngFor="let valu of values;" [value]="valu">{{valu}}</option>
+         </select>
+       </div>
+       <div class="form-group">
+         <label for="difficultyLevel">Difficulty Level</label>
+         <input type="number" class="form-control" id="difficultyLevel"
+                required
+                [(ngModel)]="model.difficultyLevel" name="difficultyLevel"
+                #name="ngModel">
+                <div [hidden]="name.valid || name.pristine"
+                class="alert alert-danger">
+                Difficulty Level is required.
+                </div>
+ 
+       </div>
+       </div>
+       <div [hidden]="!hideme[i]">
+        <button type = "submit" (click)='updateTicket(model)' [disabled]="!ticketForm.form.valid">Update ticket</button>
+     </div>
+     
+     </form>
+  
+ </div>
