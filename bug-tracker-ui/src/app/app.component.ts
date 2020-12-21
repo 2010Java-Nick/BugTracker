@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ticks!: TicketDto[];
   ticket!: TicketDto;
 
-  readonly ROOT_URL = 'http://20.51.254.239:9090/';
+  readonly ROOT_URL = 'http://localhost:9090/';
 
 
 
