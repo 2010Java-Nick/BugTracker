@@ -5,9 +5,13 @@ import { Employee } from '../model/employee';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
+    baseURL: string = "http://localhost:9090/";
+
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.http.get<Employee[]>(`/employee`);
+  
+    viewLeaderBoard() {
+        return this.http.get<Employee[]>(this.baseURL+"leaderboard");
     }
 }

@@ -18,9 +18,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { HomeComponent } from './homepage/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewPostsComponent } from './components/post/view-posts/view-posts.component';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +29,9 @@ import { ViewPostsComponent } from './components/post/view-posts/view-posts.comp
     DashboardComponent,
     OpenedComponent,
     AssignedComponent,
-    HomeComponent,
     LoginComponent,
-    ViewPostsComponent
+    ViewPostsComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
