@@ -93,7 +93,7 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public List<Ticket> readTicketsByOpener(long openerId) {
 		Session sess = sessionFactory.openSession();
-		List<Ticket> ticketList = sess.createQuery("from Ticket where opener_id = :id", Ticket.class)
+		List<Ticket> ticketList = sess.createQuery("from Ticket where opener_id = :id order by ticket_id", Ticket.class)
 				.setParameter("id", openerId).getResultList();
 		return ticketList;
 	}
@@ -109,7 +109,7 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public List<Ticket> readTicketsByAssignedId(long assignedId) {
 		Session sess = sessionFactory.openSession();
-		List<Ticket> ticketList = sess.createQuery("from Ticket where employee_id = :id", Ticket.class)
+		List<Ticket> ticketList = sess.createQuery("from Ticket where employee_id = :id order by ticket_id", Ticket.class)
 				.setParameter("id", assignedId).getResultList();
 		return ticketList;
 	}
@@ -117,7 +117,7 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public List<Ticket> getAllTickets() {
 		Session sess = sessionFactory.openSession();
-		List<Ticket> ticketList = sess.createQuery("from Ticket", Ticket.class).getResultList();
+		List<Ticket> ticketList = sess.createQuery("from Ticket order by ticket_id", Ticket.class).getResultList();
 		return ticketList;
 	}
 

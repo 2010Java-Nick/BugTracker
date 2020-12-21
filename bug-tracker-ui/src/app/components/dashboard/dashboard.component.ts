@@ -10,6 +10,7 @@ import { TicketDisplay } from '../../model/ticketDtoDisplay';
 export class DashboardComponent implements OnInit {
 
   allTickets!: TicketDisplay[];
+  hideme = [] as any;
 
   constructor(private ticketService: TicketServiceService) { }
 

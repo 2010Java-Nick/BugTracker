@@ -27,7 +27,7 @@ export class OpenedComponent implements OnInit {
   
   submitted = true;
 
-  hideme = [] as any;
+
 
   
 
