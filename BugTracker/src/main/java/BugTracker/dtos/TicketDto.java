@@ -2,6 +2,8 @@ package BugTracker.dtos;
 
 import java.time.LocalDateTime;
 
+import BugTracker.pojos.Ticket;
+
 
 
 
@@ -60,8 +62,19 @@ public class TicketDto {
 		this.assignedName = assignedName;
 	}
 
-
 	
+
+	public TicketDto(long ticketId, String name, long statusId, long priorityId, int difficultyLevel) {
+		super();
+		this.ticketId = ticketId;
+		this.name = name;
+		this.statusId = statusId;
+		this.priorityId = priorityId;
+		this.difficultyLevel = difficultyLevel;
+	}
+
+
+
 
 	public long getTicketId() {
 		return ticketId;

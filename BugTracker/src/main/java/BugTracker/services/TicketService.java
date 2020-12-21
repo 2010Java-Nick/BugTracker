@@ -26,6 +26,10 @@ public interface TicketService {
 	
 	public List<TicketDto> getDisplayAllTickets(List<Ticket> lists);
 	
+	public Ticket dtoToTicket(TicketDto ticketDto);
+	
+	public TicketDto getDisplayTicket(Ticket ticket);
+	
 	
 	
 }
