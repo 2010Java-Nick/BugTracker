@@ -2,10 +2,11 @@
    {{ticket.name}} - {{ticket.createdStr}}  <br>
    Status: {{ticket.status}} -  Priority: {{ticket.priority}} <br>
    Opened by: {{ticket.openerName}} <br><br><br>
-   <button (click) = 'showPosts()'>Click Me</button>
+   <button (click) = "hideme[i] = !hideme[i]">Click Me</button>
 
-   <div [hidden] = "notClicked">
+   <div [hidden] = "!hideme[i]">
     <app-view-posts [idNumber] = "ticket.ticketId"></app-view-posts>
+    
    </div>
 
 </div>

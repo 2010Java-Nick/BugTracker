@@ -21,6 +21,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { HomeComponent } from './homepage/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewPostsComponent } from './components/post/view-posts/view-posts.component';
+import { PostFormComponent } from './components/post/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ViewPostsComponent } from './components/post/view-posts/view-posts.comp
     AssignedComponent,
     HomeComponent,
     LoginComponent,
-    ViewPostsComponent
+    ViewPostsComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,

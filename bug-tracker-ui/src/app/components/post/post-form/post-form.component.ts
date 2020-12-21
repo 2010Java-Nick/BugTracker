@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../../../model/post';
 import { PostService } from '../post.service';
+import { CurrentUser } from 'src/app/model/currentUserDto';
 
 @Component({
   selector: 'app-post-form',
@@ -10,7 +11,13 @@ import { PostService } from '../post.service';
 })
 export class PostFormComponent {
 
-  model = new Post(1, " ", "");
+  @Input() ticketId!: number;
+
+  currentUser = JSON.parse(localStorage.getItem('currentUser')!) as CurrentUser;
+
+  empId = this.currentUser.id;
+  
+  model = new Post(this.ticketId, this.empId, "", "");
 
   submitted = false;
 
@@ -22,7 +29,7 @@ export class PostFormComponent {
   }
 
   newPost() {
-    this.model = new Post(1, " ", "");
+    this.model = new Post(this.ticketId, this.empId, "", "");
   }
 
 

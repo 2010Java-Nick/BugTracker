@@ -1,4 +1,7 @@
 <div *ngFor = "let post of posts">
-    {{post.employeeName}}<br>
-    {{post.body}}
+    {{post.employeeName}} said: <br>
+    {{post.body}} 
+    <br>
+    <br>
 </div>
+<app-post-form [ticketId] = "idNumber"></app-post-form>

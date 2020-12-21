@@ -11,11 +11,10 @@ import { ViewPostsComponent } from '../post/view-posts/view-posts.component'
 })
 export class AssignedComponent implements OnInit {
 
-  @Input() notClicked: boolean = true;
 
   allTickets!: TicketDisplay[];
-  numValue!: number
-
+  hideme = [];
+  
   constructor(private ticketService: TicketServiceService,
               private postService: PostService) { }
 
@@ -24,9 +23,6 @@ export class AssignedComponent implements OnInit {
       
   }
 
-  showPosts(){
-    this.notClicked = !this.notClicked;
-    
-  }
+  
 
 }
