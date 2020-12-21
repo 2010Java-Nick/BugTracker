@@ -172,6 +172,7 @@ public class TicketServiceImpl implements TicketService {
 		return dtos;
 	}
 	
+	@Override
 	public TicketDto getDisplayTicket(Ticket ticket) {
 		return ticket.toDisplay();
 	}
