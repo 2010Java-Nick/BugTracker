@@ -12,7 +12,7 @@ import { tap } from 'rxjs/operators';
 })
 export class PostService {
 
-  baseURL: string = "http://localhost:9090/post";
+  baseURL: string = "http://20.51.254.239:9090/post";
   
   constructor(private http: HttpClient) { }
 

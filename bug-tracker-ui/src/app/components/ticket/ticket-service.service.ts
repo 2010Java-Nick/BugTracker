@@ -10,7 +10,7 @@ import { CurrentUser } from '../../model/currentUserDto';
 export class TicketServiceService {
 
  
-  baseURL: string = "http://localhost:9090/";
+  baseURL: string = "http://20.51.254.239:9090/";
 
   currentUser = JSON.parse(localStorage.getItem('currentUser')!) as CurrentUser;
 
